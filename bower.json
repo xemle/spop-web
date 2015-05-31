@@ -1,0 +1,20 @@
+{
+  "name": "spopd-angular",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Xemle <xemle@phtagr.org>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootstrap": "~3.3.4"
+  }
+}

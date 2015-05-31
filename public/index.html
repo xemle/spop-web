@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spopd Angular</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="javascript/app.js"></script>
+  </head>
+
+  <body ng-app="app">
+    <div class="container">
+      <div class="row" ng-controller="MainCtrl">
+        <div class="col-md-12">
+          <h1>Spopd + Angular</h1>
+
+          <form>
+            <div class="form-group">
+              <label for="commandInput">Command</label>
+              <input type="text" class="form-control" id="commandInput" placeholder="Enter spopd command" ng-model="command">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="execute()">Execute</button>
+          </form>
+
+          <p>Result</p>
+          <pre ng-bind="data"></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
