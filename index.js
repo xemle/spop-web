@@ -1,4 +1,4 @@
-var spopd = require('./lib/spopdClient');
+var spopd = require('./lib/spopd/client');
 
 var spopdOptions = {
   port: 6602
