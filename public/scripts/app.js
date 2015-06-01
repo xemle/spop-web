@@ -1,5 +1,7 @@
 angular
-  .module('app', [])
+  .module('app', [
+    'ngRoute'
+  ])
   .controller('MainCtrl', [
     '$scope',
     '$http',

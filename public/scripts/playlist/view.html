@@ -1,0 +1,11 @@
+<h2>{{playlist.name}}</h2>
+
+<a href="#/playlists">Show all playlists</a>
+
+<div class="list-group">
+  <a ng-repeat="track in playlist.tracks" class="list-group-item">
+    <h4>{{ track.title }}</h4>
+    <p>{{ track.artist }} - {{ track.album }}</p>
+  </a>
+</div>
+<pre>{{playlist}}</pre>

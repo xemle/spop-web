@@ -1,0 +1,14 @@
+<h1>Spopd Debug</h1>
+
+<a href="#">Home</a>
+
+<form>
+  <div class="form-group">
+    <label for="commandInput">Command</label>
+    <input type="text" class="form-control" id="commandInput" placeholder="Enter spopd command" ng-model="command">
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="execute()">Execute</button>
+</form>
+
+<p>Result</p>
+<pre ng-bind="data"></pre>

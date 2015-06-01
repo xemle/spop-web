@@ -1,0 +1,10 @@
+<h2>Playlists</h2>
+
+<a href="#">Home</a>
+
+<div class="list-group">
+  <a ng-repeat="playlist in playlists" class="list-group-item" ng-href="#/playlists/{{playlist.index}}">
+    <h4>{{ playlist.name }}</h4>
+  </a>
+</div>
+<pre>{{ playlists }}</pre>
