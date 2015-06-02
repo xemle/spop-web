@@ -1,5 +1,5 @@
 var express = require('express')
-var spopd = require('./lib/spopd/client');
+var spopdMiddleware = require('./lib/spopd/middleware');
 var app = express();
 
 var spopdOptions = {
@@ -8,15 +8,7 @@ var spopdOptions = {
 
 app.use(express.static('public'));
 
-app.use('/spopd', function (req, res, next) {
-  var cmd = unescape(req.path.substr(1));
-  spopd(cmd, spopdOptions).then(function(data) {
-    res.set('Content-Type', 'application/json');
-    res.send(data);
-  }, function(err) {
-    res.status(500).json(err);
-  })
-});
+app.use('/spopd', spopdMiddleware(spopdOptions));
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
