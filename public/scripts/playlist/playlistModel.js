@@ -3,9 +3,13 @@
 angular
   .module('app')
   .factory('PlaylistModel', [
-    function () {
+    'TrackModel',
+    function (TrackModel) {
       function PlaylistModel(data) {
         angular.forEach(data, function(value, key) {
+          if (key === 'tracks') {
+            value = TrackModel.createList(value);
+          }
           this[key] = value;
         }, this);
         this.name = this.name || 'Starred';
