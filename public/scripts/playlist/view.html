@@ -3,7 +3,10 @@
 <a href="#/playlists">Show all playlists</a>
 
 <div class="list-group">
-  <a ng-repeat="track in playlist.tracks" class="list-group-item">
+  <a ng-repeat="track in playlist.tracks" class="list-group-item track">
+    <div class="cover">
+      <img ng-src="/spopd/uimage/{{ track.uri }}" width="64" height="64">
+    </div>
     <h4>{{ track.title }}</h4>
     <p>{{ track.artist }} - {{ track.album }}</p>
   </a>
