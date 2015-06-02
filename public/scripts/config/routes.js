@@ -15,16 +15,9 @@ angular
           controller: 'PlaylistListCtrl',
           resolve: {
             playlists: [
-              '$http',
-              'PlaylistListModel',
-              function ($http, PlaylistListModel) {
-                return $http.get('/spopd/ls').then(function(response) {
-                  var result = [];
-                  angular.forEach(response.data.playlists || [], function(data) {
-                    result.push(new PlaylistListModel(data));
-                  });
-                  return result;
-                });
+              'PlaylistListService',
+              function (PlaylistListService) {
+                return PlaylistListService.get();
               }]
           }
         }).
@@ -33,13 +26,10 @@ angular
           controller: 'PlaylistCtrl',
           resolve: {
             playlist: [
-              '$http',
               '$route',
-              'PlaylistModel',
-              function ($http, $route, PlaylistModel) {
-                return $http.get('/spopd/ls ' + $route.current.params.playlistId).then(function (response) {
-                  return new PlaylistModel(response.data);
-                });
+              'PlaylistService',
+              function ($route, PlaylistService) {
+                return PlaylistService.get($route.current.params.playlistId);
               }
             ]
           }
