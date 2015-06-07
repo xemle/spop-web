@@ -2,11 +2,27 @@
 <html>
   <head>
     <title>Spop Web</title>
+    <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbuild -->
+    <!-- build:css styles/app.css -->
     <link rel="stylesheet" href="styles/app.css" />
+    <!-- endbuild -->
+  </head>
 
+  <body ng-app="app">
+    <div class="container">
+      <div class="row">
+        <div ng-view class="col-md-12"></div>
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.,public}) scripts/app.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/config/routes.js"></script>
     <script src="scripts/home/home.js"></script>
@@ -18,13 +34,8 @@
     <script src="scripts/playlist/playlistService.js"></script>
     <script src="scripts/playlist/playlistCtrl.js"></script>
     <script src="scripts/debug/debug.js"></script>
-  </head>
-
-  <body ng-app="app">
-    <div class="container">
-      <div class="row">
-        <div ng-view class="col-md-12"></div>
-      </div>
-    </div>
+    <!-- inject:js -->
+    <!-- endinject -->
+    <!-- endbuild -->
   </body>
 </html>
