@@ -1,7 +1,7 @@
 {
-  "name": "spopd-angular",
+  "name": "spop-web",
   "main": "index.js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "authors": [
     "Xemle <xemle@phtagr.org>"
   ],

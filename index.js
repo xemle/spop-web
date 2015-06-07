@@ -1,14 +1,14 @@
 var express = require('express')
-var spopdMiddleware = require('./lib/spopd/middleware');
+var spopMiddleware = require('./lib/spop/middleware');
 var app = express();
 
-var spopdOptions = {
+var spopOptions = {
   port: 6602
 };
 
 app.use(express.static('public'));
 
-app.use('/spopd', spopdMiddleware(spopdOptions));
+app.use('/spop', spopMiddleware(spopOptions));
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

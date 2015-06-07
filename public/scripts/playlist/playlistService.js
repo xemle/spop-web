@@ -8,7 +8,7 @@ angular
     function($http, PlaylistModel) {
       return {
         get: function(playlistId) {
-          return $http.get('/spopd/ls ' + playlistId).then(function (response) {
+          return $http.get('/spop/ls ' + playlistId).then(function (response) {
             return new PlaylistModel(response.data);
           });
         }

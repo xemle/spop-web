@@ -1,13 +1,13 @@
 {
-  "name": "spopd-angular",
+  "name": "spop-web",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web interface to spop (spotify client daemon)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Xemle <xemle@phtagr.org>",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.12.4",
     "q": "^1.4.1"
