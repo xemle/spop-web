@@ -34,6 +34,18 @@ angular
             ]
           }
         }).
+        when('/queue', {
+          templateUrl: 'scripts/queue/view.html',
+          controller: 'QueueCtrl',
+          resolve: {
+            queue: [
+              'QueueService',
+              function (QueueService) {
+                return QueueService.get();
+              }
+            ]
+          }
+        }).
         when('/debug', {
           templateUrl: 'scripts/debug/view.html',
           controller: 'DebugCtrl'

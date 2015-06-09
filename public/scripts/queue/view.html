@@ -1,0 +1,23 @@
+<h1>Queue</h1>
+
+<ol class="breadcrumb">
+  <li><a href="#/">Home</a></li>
+</ol>
+
+<a ng-click="prev()" class="btn btn-default">Prev</a>
+<a ng-click="stop()" class="btn btn-default">Stop</a>
+<a ng-click="play()" class="btn btn-default">Play</a>
+<a ng-click="toggle()" class="btn btn-default">Toggle</a>
+<a ng-click="next()" class="btn btn-default">Next</a>
+
+<div class="list-group">
+  <a ng-repeat="track in queue.tracks" class="list-group-item track">
+    <div class="cover">
+      <img ng-src="/spop/uimage/{{ track.uri }}" width="64" height="64">
+    </div>
+    <h4>{{ track.title }}</h4>
+    <p>{{ track.artist }} - {{ track.album }}</p>
+  </a>
+</div>
+<p>Result</p>
+<pre ng-bind="queue"></pre>
