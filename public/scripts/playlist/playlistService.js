@@ -9,8 +9,13 @@ angular
       return {
         get: function(playlistId) {
           return $http.get('/spop/ls ' + playlistId).then(function (response) {
-            return new PlaylistModel(response.data);
+            // Extend response data with playlist index
+            var data = angular.extend({index: playlistId}, response.data);
+            return new PlaylistModel(data);
           });
+        },
+        play: function(playlist) {
+          return $http.get('/spop/play ' + playlist.index);
         }
       };
     }

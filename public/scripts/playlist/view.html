@@ -1,6 +1,11 @@
 <h2>{{playlist.name}}</h2>
 
-<a href="#/playlists">Show all playlists</a>
+<ol class="breadcrumb">
+  <li><a href="#/">Home</a></li>
+  <li><a href="#/playlists">Playlists</a></li>
+</ol>
+
+<a ng-click="play()" class="btn btn-default btn-primary">Play</a>
 
 <div class="list-group">
   <a ng-repeat="track in playlist.tracks" class="list-group-item track">
