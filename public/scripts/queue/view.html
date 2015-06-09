@@ -11,7 +11,7 @@
 <a ng-click="next()" class="btn btn-default">Next</a>
 
 <div class="list-group">
-  <a ng-repeat="track in queue.tracks" class="list-group-item track">
+  <a ng-repeat="track in queue.tracks" class="list-group-item track" ng-class="{active: track.index == currentTrack}">
     <div class="cover">
       <img ng-src="/spop/uimage/{{ track.uri }}" width="64" height="64">
     </div>
@@ -19,5 +19,3 @@
     <p>{{ track.artist }} - {{ track.album }}</p>
   </a>
 </div>
-<p>Result</p>
-<pre ng-bind="queue"></pre>

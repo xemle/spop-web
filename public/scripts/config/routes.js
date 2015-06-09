@@ -43,6 +43,12 @@ angular
               function (QueueService) {
                 return QueueService.get();
               }
+            ],
+            status: [
+              'StatusService',
+              function(StatusService) {
+                return StatusService.status();
+              }
             ]
           }
         }).
