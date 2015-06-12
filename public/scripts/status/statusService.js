@@ -18,13 +18,24 @@ angular
         });
       }
 
-      return {
+      $rootScope.$on('visibility:changed', function($ev, isHidden) {
+        console.log('visibility:changed ' + isHidden);
+        if (isHidden) {
+          service.stop();
+        } else {
+          service.start();
+        }
+      });
+
+      var service = {
         start: function() {
           if (isRunning) {
             return;
           }
           isRunning = true;
-          doPoll().then(doPoll());
+          doPoll().then(doPoll()).catch(function() {
+            isRunning = false;
+          });
         },
         stop: function() {
           if (!isRunning) {
@@ -39,5 +50,7 @@ angular
           });
         }
       };
+
+      return service;
     }
   ]);

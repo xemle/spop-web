@@ -16,7 +16,7 @@ angular
         },
         play: function(playlist) {
           return $http.get('/spop/play ' + playlist.index);
-        }
+      }
       };
     }
   ]);
