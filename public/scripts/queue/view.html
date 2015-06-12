@@ -4,10 +4,11 @@
   <li><a href="#/">Home</a></li>
 </ol>
 
-<a ng-click="prev()" class="btn btn-default">Prev</a>
-<a ng-click="stop()" class="btn btn-default">Stop</a>
-<a ng-click="play()" class="btn btn-default">Play</a>
-<a ng-click="toggle()" class="btn btn-default">Toggle</a>
-<a ng-click="next()" class="btn btn-default">Next</a>
+<a ng-click="prev()" class="btn btn-default"><i class="fa fa-step-backward"></i></a>
+<a ng-click="toggle()" class="btn btn-default"><i class="fa" ng-class="{'fa-play': status !== 'playing', 'fa-pause': status === 'playing'}"></i></a>
+<a ng-click="next()" class="btn btn-default"><i class="fa fa-step-forward"></i></a>
+
+<a ng-click="clear()" class="btn btn-default"><i class="fa fa-trash-o"></i></a>
+
 
 <div track-list="queue.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick" track-class="trackClass"></div>

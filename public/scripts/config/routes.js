@@ -52,6 +52,20 @@ angular
             ]
           }
         }).
+        when('/search', {
+          templateUrl: 'scripts/search/view.html',
+          controller: 'SearchCtrl',
+          resolve: {
+            search: [
+              '$location',
+              'SearchService',
+              function ($location, SearchService) {
+                var term = $location.search().q || '';
+                return SearchService.search(term);
+              }
+            ]
+          }
+        }).
         when('/debug', {
           templateUrl: 'scripts/debug/view.html',
           controller: 'DebugCtrl'

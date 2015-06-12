@@ -2,17 +2,21 @@
 
 angular
   .module('app')
-  .controller('PlaylistCtrl', [
+  .controller('SearchCtrl', [
     '$scope',
     '$location',
-    'PlaylistService',
+    'SearchService',
     'QueueService',
-    'playlist',
-    function($scope, $location, PlaylistService, QueueService, playlist) {
-      $scope.playlist = playlist;
+    'search',
+    function($scope, $location, SearchService, QueueService, search) {
+      $scope.search = search;
 
-      $scope.play = function() {
-        PlaylistService.play($scope.playlist);
+      if ($location.search().q) {
+        $scope.term = $location.search().q;
+      }
+      $scope.doSearch = function() {
+        $location.search({q: $scope.term});
+        //$location.path('/search'); //?q=' + $scope.term);
       };
 
       $scope.trackMenu = [
@@ -24,19 +28,19 @@ angular
       ];
       $scope.trackMenuClick = function(track, item) {
         if (item.action === 'play') {
-          QueueService.addTrack(track).then(QueueService.playTrack(track));
+          QueueService.addTrack(track).then(function() {
+            QueueService.playTrack(track);
+          });
         } else if (item.action === 'append') {
           QueueService.addTrack(track);
         } else if (item.action === 'title') {
           $location.search({q: 'track:\'' + track.title + '\''});
-          $location.path('/search');
         } else if (item.action === 'artist') {
           $location.search({q: 'artist:\'' + track.artist.replace(/,.*/, '') + '\''});
-          $location.path('/search');
         } else if (item.action === 'album') {
           $location.search({q: 'album:\'' + track.album + '\''});
-          $location.path('/search');
         }
       };
+
     }
   ]);

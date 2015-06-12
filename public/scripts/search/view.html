@@ -1,0 +1,14 @@
+<h1>Search</h1>
+
+<ol class="breadcrumb">
+  <li><a href="#/">Home</a></li>
+</ol>
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search" ng-model="term">
+  <div class="input-group-btn">
+    <button type="button" class="btn btn-default btn-primary" aria-expanded="false" ng-click="doSearch()">Search</button>
+  </div>
+</div>
+
+<div track-list="search.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>

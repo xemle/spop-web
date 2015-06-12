@@ -12,17 +12,29 @@ angular
       $scope.queue = queue;
 
       $scope.prev = QueueService.prev;
-      $scope.stop = QueueService.stop;
       $scope.toggle = QueueService.toggle;
-      $scope.start = QueueService.start;
       $scope.next = QueueService.next;
+      $scope.clear = function() {
+        QueueService.clear().then(function() {
+          return QueueService.get()
+        }).then(function(queue) {
+          $scope.queue = queue;
+        });
+      };
 
       $scope.trackMenu = [
-        { icon: 'fa-play', action: 'play', text: 'Play' }
+        { icon: 'fa-play', action: 'play', text: 'Play' },
+        { icon: 'fa-trash-o', action: 'remove', text: 'Remove' }
       ];
       $scope.trackMenuClick = function(track, item) {
         if (item.action === 'play') {
           QueueService.goto(track);
+        } else if (item.action === 'remove') {
+          QueueService.removeTrack(track).then(function() {
+            return QueueService.get()
+          }).then(function(queue) {
+            $scope.queue = queue;
+          });
         }
       };
       $scope.trackClass = function(track) {
