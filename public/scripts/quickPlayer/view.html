@@ -1,0 +1,12 @@
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container" ng-controller="QuickPlayerCtrl">
+    <div class="row">
+      <div class="col-md-12">
+        <a ng-click="prev()" class="btn btn-default"><i class="fa fa-step-backward"></i></a>
+        <a ng-click="toggle()" class="btn btn-default"><i class="fa" ng-class="{'fa-play': status !== 'playing', 'fa-pause': status === 'playing'}"></i></a>
+        <a ng-click="next()" class="btn btn-default"><i class="fa fa-step-forward"></i></a>
+        <a href="#/queue" class="btn btn-default"><i class="fa fa-list"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>

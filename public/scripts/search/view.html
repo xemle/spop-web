@@ -5,8 +5,9 @@
 </ol>
 
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Search" ng-model="term">
+  <input type="text" class="form-control" placeholder="Search" ng-model="term" ng-keypress="keypress($event)">
   <div class="input-group-btn">
+    <button type="button" class="btn btn-default" aria-expanded="false" ng-click="term=''"><i class="fa fa-times"></i></button>
     <button type="button" class="btn btn-default btn-primary" aria-expanded="false" ng-click="doSearch()">Search</button>
   </div>
 </div>

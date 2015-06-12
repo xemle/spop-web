@@ -18,6 +18,11 @@ angular
         $location.search({q: $scope.term});
         //$location.path('/search'); //?q=' + $scope.term);
       };
+      $scope.keypress = function($event) {
+        if ($event.which === 13) {
+          $scope.doSearch();
+        }
+      };
 
       $scope.trackMenu = [
         { icon: 'fa-play', action: 'play', text: 'Play' },

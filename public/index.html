@@ -21,6 +21,7 @@
         <div ng-view class="col-md-12"></div>
       </div>
     </div>
+    <div ng-include="'scripts/quickPlayer/view.html'" ></div>
 
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -60,6 +61,8 @@
     <script src="scripts/search/searchModel.js"></script>
     <script src="scripts/search/searchService.js"></script>
     <script src="scripts/search/searchCtrl.js"></script>
+
+    <script src="scripts/quickPlayer/queueCtrl.js"></script>
 
     <script src="scripts/debug/debug.js"></script>
 
