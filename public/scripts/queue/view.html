@@ -10,12 +10,4 @@
 <a ng-click="toggle()" class="btn btn-default">Toggle</a>
 <a ng-click="next()" class="btn btn-default">Next</a>
 
-<div class="list-group">
-  <a ng-repeat="track in queue.tracks" class="list-group-item track" ng-class="{active: track.index == currentTrack}">
-    <div class="cover">
-      <img ng-src="/spop/uimage/{{ track.uri }}" width="64" height="64">
-    </div>
-    <h4>{{ track.title }}</h4>
-    <p>{{ track.artist }} - {{ track.album }}</p>
-  </a>
-</div>
+<div track-list="queue.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick" track-class="trackClass"></div>

@@ -1,4 +1,6 @@
 angular
   .module('app', [
-    'ngRoute'
+    'ngRoute',
+    'ngSanitize',
+    'mgcrea.ngStrap.dropdown'
   ]);

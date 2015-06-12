@@ -6,14 +6,6 @@
 </ol>
 
 <a ng-click="play()" class="btn btn-default btn-primary">Play</a>
+<a href="#/queue" class="btn btn-default">Queue</a>
 
-<div class="list-group">
-  <a ng-repeat="track in playlist.tracks" class="list-group-item track">
-    <div class="cover">
-      <img ng-src="/spop/uimage/{{ track.uri }}" width="64" height="64">
-    </div>
-    <h4>{{ track.title }}</h4>
-    <p>{{ track.artist }} - {{ track.album }}</p>
-  </a>
-</div>
-<pre>{{playlist}}</pre>
+<div track-list="playlist.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>

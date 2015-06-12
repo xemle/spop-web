@@ -26,6 +26,23 @@ angular
         },
         next: function() {
           return $http.get('/spop/next');
+        },
+        goto: function(track) {
+          return $http.get('/spop/goto ' + track.index);
+        },
+        addTrack: function(track) {
+          return $http.get('/spop/uadd ' + track.uri);
+        },
+        playTrack: function(track) {
+          var _this = this;
+          this.get().then(function(queue) {
+            var queueTrack = queue.tracks.filter(function(t) {
+              return t.uri === track.uri;
+            }).pop();
+            if (queueTrack) {
+              return _this.goto(queueTrack);
+            }
+          });
         }
       };
     }

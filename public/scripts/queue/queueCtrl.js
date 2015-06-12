@@ -17,6 +17,20 @@ angular
       $scope.start = QueueService.start;
       $scope.next = QueueService.next;
 
+      $scope.trackMenu = [
+        { icon: 'fa-play', action: 'play', text: 'Play' }
+      ];
+      $scope.trackMenuClick = function(track, item) {
+        if (item.action === 'play') {
+          QueueService.goto(track);
+        }
+      };
+      $scope.trackClass = function(track) {
+        return {
+          active: track.index === $scope.currentTrack
+        };
+      };
+
       function setStatus(status) {
         $scope.status = status.status;
         $scope.currentTrack = status.current_track;
