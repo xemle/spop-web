@@ -1,11 +1,7 @@
-<h2>{{playlist.name}}</h2>
-
 <ol class="breadcrumb">
   <li><a href="#/">Home</a></li>
   <li><a href="#/playlists">Playlists</a></li>
+  <li class="active">{{playlist.name}}</li>
 </ol>
-
-<a ng-click="play()" class="btn btn-default btn-primary">Play</a>
-<a href="#/queue" class="btn btn-default">Queue</a>
 
 <div track-list="playlist.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
