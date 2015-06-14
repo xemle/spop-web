@@ -9,7 +9,7 @@ angular
       function visibilitychanged() {
         var d = $document[0],
             isHidden = d.hidden || d.webkitHidden || d.mozHidden || d.msHidden;
-        $rootScope.$emit('visibility:changed', isHidden);
+        $rootScope.$emit('visibility:change', isHidden);
       }
 
       $document.on('visibilitychange',visibilitychanged);

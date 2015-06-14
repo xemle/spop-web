@@ -11,15 +11,13 @@ angular
       function doPoll() {
         return $http.get('/spop/idle').then(function(response) {
           $rootScope.$emit('status:change', response.data);
-          console.log(response.data);
           if (isRunning) {
             return doPoll();
           }
         });
       }
 
-      $rootScope.$on('visibility:changed', function($ev, isHidden) {
-        console.log('visibility:changed ' + isHidden);
+      $rootScope.$on('visibility:change', function($ev, isHidden) {
         if (isHidden) {
           service.stop();
         } else {

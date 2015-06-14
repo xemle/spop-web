@@ -58,14 +58,14 @@ angular
       }
       setStatus(status);
 
-      $rootScope.$on('status:change', function(event, data) {
+      $scope.$on('$destroy', $rootScope.$on('status:change', function(event, data) {
         setStatus(data);
-      });
-      $rootScope.$on('queue:change', function() {
+      }));
+      $scope.$on('$destroy', $rootScope.$on('queue:change', function() {
         QueueService.get().then(function(queue) {
           $scope.queue = queue;
         });
-      });
+      }));
 
     }
   ]);
