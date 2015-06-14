@@ -1,7 +1,7 @@
 <table class="table tracks">
   <tr ng-repeat="track in trackList" ng-class="trackClass(track)">
     <td>
-      <img ng-src="/spop/uimage/{{ track.uri }}" width="48" height="48">
+      <div afkl-lazy-image="/spop/uimage/{{ track.uri }}" afkl-lazy-image-options="{className: 'track-cover'}"></div>
     </td>
     <td>
       <p>{{ track.title }}<br>

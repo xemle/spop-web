@@ -19,6 +19,7 @@
     "angular-sanitize": "~1.4.0",
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
-    "angular-strap": "~2.2.4"
+    "angular-strap": "~2.2.4",
+    "afkl-lazy-image": "~0.1.4"
   }
 }

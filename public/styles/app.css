@@ -1,5 +1,4 @@
-.cover {
-  display: block;
-  float: left;
-  margin-right: 5px;
+.track-cover {
+  height: 48px;
+  width: 48px
 }
