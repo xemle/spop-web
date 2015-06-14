@@ -9,6 +9,7 @@
     <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-additions/dist/modules/aside.css" />
     <!-- endbuild -->
     <!-- build:css styles/app.css -->
     <link rel="stylesheet" href="styles/app.css" />
@@ -18,6 +19,7 @@
   <body ng-app="app">
     <div class="container" id="main">
       <div class="row">
+        <div class="menu-button"></div>
         <div ng-view class="col-md-12"></div>
       </div>
     </div>
@@ -27,6 +29,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
 
     <!-- angular-strap:dropdown -->
     <script src="bower_components/angular-strap/dist/modules/dimensions.js"></script>
@@ -34,6 +37,8 @@
     <script src="bower_components/angular-strap/dist/modules/tooltip.tpl.js"></script>
     <script src="bower_components/angular-strap/dist/modules/dropdown.js"></script>
     <script src="bower_components/angular-strap/dist/modules/dropdown.tpl.js"></script>
+    <script src="bower_components/angular-strap/dist/modules/modal.js"></script>
+    <script src="bower_components/angular-strap/dist/modules/aside.js"></script>
 
     <script src="bower_components/afkl-lazy-image/release/lazy-image.js"></script>
     <!-- endbuild -->
@@ -64,6 +69,8 @@
     <script src="scripts/search/searchService.js"></script>
     <script src="scripts/search/searchCtrl.js"></script>
 
+    <script src="scripts/menu/menuButton.js"></script>
+    <script src="scripts/menu/menuCtrl.js"></script>
     <script src="scripts/quickPlayer/queueCtrl.js"></script>
 
     <script src="scripts/debug/debug.js"></script>
