@@ -15,11 +15,17 @@ angular
       $scope.prev = QueueService.prev;
       $scope.toggle = QueueService.toggle;
       $scope.next = QueueService.next;
-      $scope.clear = function() {
-        QueueService.clear().then(function() {
-          return QueueService.get()
-        }).then(function(queue) {
+
+      function reloadQueue() {
+        return QueueService.get().then(function(queue) {
           $scope.queue = queue;
+          return queue;
+        });
+      }
+
+      $scope.clear = function() {
+        return QueueService.clear().then(function() {
+          return reloadQueue();
         });
       };
 
@@ -62,9 +68,10 @@ angular
         setStatus(data);
       }));
       $scope.$on('$destroy', $rootScope.$on('queue:change', function() {
-        QueueService.get().then(function(queue) {
-          $scope.queue = queue;
-        });
+        reloadQueue();
+      }));
+      $scope.$on('$destroy', $rootScope.$on('visibility:change', function() {
+        reloadQueue();
       }));
 
     }
