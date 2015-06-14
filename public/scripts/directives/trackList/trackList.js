@@ -15,8 +15,8 @@ angular
         },
         templateUrl: 'scripts/directives/trackList/view.html',
         link: function(scope) {
-          scope.itemClick = function(track, item) {
-            scope.trackMenuClick(track, item);
+          scope.itemClick = function(data, item) {
+            scope.trackMenuClick(data, item);
           };
         }
       };

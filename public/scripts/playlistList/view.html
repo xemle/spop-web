@@ -4,9 +4,13 @@
   <li><a href="#/">Home</a></li>
 </ol>
 
-<div class="list-group">
-  <a ng-repeat="playlist in playlists" class="list-group-item" ng-href="#/playlists/{{playlist.index}}">
-    <h4>{{ playlist.name }}</h4>
-  </a>
-</div>
-<pre>{{ playlists }}</pre>
+<table class="table playlists">
+  <tr ng-repeat="playlist in playlists" ng-mouseover="active = true" ng-mouseout="active = false" ng-class="{active: active}">
+    <td>
+      {{ playlist.name }}
+    </td>
+    <td>
+      <button type="button" class="btn btn-default" data-animation="am-flip-x" data-bs-dropdown="{data: playlist, items: playlistMenu}" data-template="scripts/directives/trackList/menu.html" data-html="1" data-placement="auto top-left"><span class="caret"></span></button>
+    </td>
+  </tr>
+</table>

@@ -1,6 +1,9 @@
 body {
   padding-bottom: 70px;
 }
+.playlists > tbody > tr > td {
+  vertical-align: middle;
+}
 .track-cover {
   height: 48px;
   width: 48px
