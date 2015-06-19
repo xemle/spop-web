@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container" ng-controller="QuickPlayerCtrl">
     <div class="row">
       <div class="col-xs-2">
-        <a href="#/search" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></a>
+        <a class="btn navbar-btn" ng-click="openMenu()"><i class="fa fa-fw fa-bars"></i> Menu</a>
       </div>
       <div class="col-xs-8 text-center">
         <a ng-click="prev()" class="btn btn-default navbar-btn"><i class="fa fa-step-backward"></i></a>
@@ -10,7 +10,7 @@
         <a ng-click="next()" class="btn btn-default navbar-btn"><i class="fa fa-step-forward"></i></a>
       </div>
       <div class="col-xs-2 text-right">
-        <a href="#/queue" class="btn btn-default navbar-btn"><i class="fa fa-list"></i></a>
+        <a href="#/search" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></a>
       </div>
     </div>
   </div>

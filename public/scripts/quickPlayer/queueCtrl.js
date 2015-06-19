@@ -5,9 +5,10 @@ angular
   .controller('QuickPlayerCtrl', [
     '$rootScope',
     '$scope',
+    '$aside',
     'QueueService',
     'StatusService',
-    function($rootScope, $scope, QueueService, StatusService) {
+    function($rootScope, $scope, $aside, QueueService, StatusService) {
       $scope.status = '';
       QueueService.get().then(function(queue) {
         $scope.queue = queue;
@@ -15,6 +16,10 @@ angular
       StatusService.status().then(function(status) {
         setStatus(status);
       });
+
+      $scope.openMenu = function() {
+        $aside({template: 'scripts/menu/view.html', placement: 'top-left'});
+      };
 
       $scope.prev = QueueService.prev;
       $scope.toggle = QueueService.toggle;

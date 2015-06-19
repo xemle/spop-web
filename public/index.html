@@ -12,13 +12,13 @@
   </head>
 
   <body ng-app="app">
+    <div ng-include="'scripts/quickPlayer/view.html'" ></div>
     <div class="container" id="main">
       <div class="row">
         <div class="menu-button"></div>
         <div ng-view class="col-md-12"></div>
       </div>
     </div>
-    <div ng-include="'scripts/quickPlayer/view.html'" ></div>
 
     <!-- build:js scripts/vendor.js -->
     <script src="bower_components/angular/angular.js"></script>
@@ -64,7 +64,6 @@
     <script src="scripts/search/searchService.js"></script>
     <script src="scripts/search/searchCtrl.js"></script>
 
-    <script src="scripts/menu/menuButton.js"></script>
     <script src="scripts/menu/menuCtrl.js"></script>
     <script src="scripts/quickPlayer/queueCtrl.js"></script>
 
