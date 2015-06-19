@@ -5,12 +5,13 @@ angular
   .factory('StatusService', [
     '$rootScope',
     '$http',
-    function($rootScope, $http) {
+    'StatusModel',
+    function($rootScope, $http, StatusModel) {
       var isRunning = false;
 
       function doPoll() {
         return $http.get('/spop/idle').then(function(response) {
-          $rootScope.$emit('status:change', response.data);
+          $rootScope.$emit('status:change', new StatusModel(response.data));
           if (isRunning) {
             return doPoll();
           }

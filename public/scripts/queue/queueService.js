@@ -8,8 +8,8 @@ angular
     '$q',
     'StatusService',
     'QueueModel',
-    'QueueStateModel',
-    function($rootScope, $http, $q, StatusService, QueueModel, QueueStateModel) {
+    'StatusModel',
+    function($rootScope, $http, $q, StatusService, QueueModel, StatusModel) {
       return {
         get: function() {
           return $http.get('/spop/qls').then(function(response) {
@@ -33,7 +33,7 @@ angular
         },
         goto: function(track) {
           return $http.get('/spop/goto ' + track.index).then(function(response) {
-            return new QueueStateModel(response.data);
+            return new StatusModel(response.data);
           });
         },
         clear: function() {
@@ -42,7 +42,7 @@ angular
         addTrack: function(track) {
           return $http.get('/spop/uadd ' + track.uri).then(function(response) {
             $rootScope.$emit('queue:change');
-            return new QueueStateModel(response.data);
+            return new StatusModel(response.data);
           });
         },
         addTracks: function(tracks) {

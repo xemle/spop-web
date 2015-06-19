@@ -2,14 +2,14 @@
 
 angular
   .module('app')
-  .factory('QueueStateModel', [
+  .factory('StatusModel', [
     function () {
-      function QueueStateModel(data) {
+      function StatusModel(data) {
         angular.forEach(data, function(value, key) {
           this[key] = value;
         }, this);
       }
 
-      return QueueStateModel;
+      return StatusModel;
     }
   ]);
