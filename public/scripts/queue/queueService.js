@@ -30,7 +30,9 @@ angular
           return $http.get('/spop/next');
         },
         goto: function(track) {
-          return $http.get('/spop/goto ' + track.index);
+          return $http.get('/spop/goto ' + track.index).then(function(response) {
+            return new QueueModel(response.data);
+          });
         },
         clear: function() {
           return $http.get('/spop/qclear');
@@ -48,7 +50,11 @@ angular
               return t.uri === track.uri;
             }).pop();
             if (queueTrack) {
-              return _this.goto(queueTrack);
+              return _this.goto(queueTrack).then(function(queueStatus) {
+                if (queueStatus.status !== 'playing') {
+                  return _this.toggle();
+                }
+              });
             }
           });
         },
