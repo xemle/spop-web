@@ -12,6 +12,7 @@
     "express": "^4.12.4",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.6.0",
+    "gulp-debug": "^2.0.1",
     "gulp-if": "^1.2.5",
     "gulp-inject": "^1.2.0",
     "gulp-less": "^3.0.3",
