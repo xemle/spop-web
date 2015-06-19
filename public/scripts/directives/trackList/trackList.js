@@ -23,7 +23,7 @@ angular
           scope.$trackClass = function(track) {
             var classes = (scope.trackClass && scope.trackClass(track)) || {};
 
-            if (scope.status && scope.status.uri === track.uri) {
+            if (scope.status && scope.status.isPlaying() && scope.status.uri === track.uri) {
               classes.active = true;
             }
             return classes;

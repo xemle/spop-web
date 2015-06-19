@@ -9,7 +9,7 @@ angular
     'QueueService',
     'StatusService',
     function($rootScope, $scope, $aside, QueueService, StatusService) {
-      $scope.status = '';
+      $scope.status = {};
       QueueService.get().then(function(queue) {
         $scope.queue = queue;
       });
@@ -30,7 +30,7 @@ angular
       };
 
       function setStatus(status) {
-        $scope.status = status.status;
+        $scope.status = status;
         $scope.currentTrack = status.current_track;
       }
 

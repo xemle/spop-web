@@ -10,6 +10,10 @@ angular
         }, this);
       }
 
+      StatusModel.prototype.isPlaying = function() {
+        return this.status === 'playing';
+      };
+
       return StatusModel;
     }
   ]);

@@ -59,13 +59,13 @@ angular
       };
 
       function setStatus(status) {
-        $scope.status = status.status;
+        $scope.status = status;
         $scope.currentTrack = status.current_track;
       }
       setStatus(status);
 
-      $scope.$on('$destroy', $rootScope.$on('status:change', function(event, data) {
-        setStatus(data);
+      $scope.$on('$destroy', $rootScope.$on('status:change', function(event, status) {
+        setStatus(status);
       }));
       $scope.$on('$destroy', $rootScope.$on('queue:change', function() {
         reloadQueue();

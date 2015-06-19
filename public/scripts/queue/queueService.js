@@ -64,7 +64,7 @@ angular
             }).pop();
             if (queueTrack) {
               return _this.goto(queueTrack).then(function(queueStatus) {
-                if (queueStatus.status !== 'playing') {
+                if (!queueStatus.isPlaying()) {
                   return _this.toggle();
                 }
               });

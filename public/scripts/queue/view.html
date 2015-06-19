@@ -4,7 +4,7 @@
 </ol>
 
 <a ng-click="prev()" class="btn btn-default"><i class="fa fa-step-backward"></i></a>
-<a ng-click="toggle()" class="btn btn-default"><i class="fa" ng-class="{'fa-play': status !== 'playing', 'fa-pause': status === 'playing'}"></i></a>
+<a ng-click="toggle()" class="btn btn-default"><i class="fa" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying() }"></i></a>
 <a ng-click="next()" class="btn btn-default"><i class="fa fa-step-forward"></i></a>
 
 <a ng-click="clear()" class="btn btn-default"><i class="fa fa-trash-o"></i></a>

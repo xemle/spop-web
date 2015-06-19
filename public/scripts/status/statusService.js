@@ -45,7 +45,7 @@ angular
         },
         status: function() {
           return $http.get('/spop/status').then(function(response) {
-            return response.data;
+            return new StatusModel(response.data);
           });
         }
       };
