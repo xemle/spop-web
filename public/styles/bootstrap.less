@@ -1,0 +1,69 @@
+@bootstrapBase: "@{bowerBase}/bootstrap/less";
+
+// Core variables and mixins
+@import "@{bootstrapBase}/variables.less";
+// Overwrite custom variables
+@import "bootstrap-variables.less";
+@import "@{bootstrapBase}/mixins.less";
+
+// Reset and dependencies
+@import "@{bootstrapBase}/normalize.less";
+@import "@{bootstrapBase}/print.less";
+@import "@{bootstrapBase}/glyphicons.less";
+
+// Core CSS
+//@import "@{bootstrapBase}/scaffolding.less";
+//@import "@{bootstrapBase}/type.less";
+//@import "@{bootstrapBase}/code.less";
+@import "@{bootstrapBase}/grid.less";
+@import "@{bootstrapBase}/tables.less";
+@import "@{bootstrapBase}/forms.less";
+@import "@{bootstrapBase}/buttons.less";
+
+// Components
+@import "@{bootstrapBase}/component-animations.less";
+@import "@{bootstrapBase}/dropdowns.less";
+//@import "@{bootstrapBase}/button-groups.less";
+@import "@{bootstrapBase}/input-groups.less";
+@import "@{bootstrapBase}/navs.less";
+@import "@{bootstrapBase}/navbar.less";
+@import "@{bootstrapBase}/breadcrumbs.less";
+//@import "@{bootstrapBase}/pagination.less";
+//@import "@{bootstrapBase}/pager.less";
+//@import "@{bootstrapBase}/labels.less";
+//@import "@{bootstrapBase}/badges.less";
+//@import "@{bootstrapBase}/jumbotron.less";
+//@import "@{bootstrapBase}/thumbnails.less";
+//@import "@{bootstrapBase}/alerts.less";
+//@import "@{bootstrapBase}/progress-bars.less";
+//@import "@{bootstrapBase}/media.less";
+@import "@{bootstrapBase}/list-group.less";
+//@import "@{bootstrapBase}/panels.less";
+//@import "@{bootstrapBase}/responsive-embed.less";
+//@import "@{bootstrapBase}/wells.less";
+//@import "@{bootstrapBase}/close.less";
+
+// Components w/ JavaScript
+//@import "@{bootstrapBase}/modals.less";
+//@import "@{bootstrapBase}/tooltip.less";
+//@import "@{bootstrapBase}/popovers.less";
+//@import "@{bootstrapBase}/carousel.less";
+
+// Utility classes
+@import "@{bootstrapBase}/utilities.less";
+@import "@{bootstrapBase}/responsive-utilities.less";
+
+
+/**
+ * Bootstrap fixes
+ */
+
+/* fixed bottom navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 50px;
+}
+/* Override table cell top-alignment */
+.playlists > tbody > tr > td {
+  vertical-align: middle;
+}

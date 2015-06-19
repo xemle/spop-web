@@ -4,3 +4,5 @@ public/bower_components
 npm-debug.log
 dist
 .tmp
+public/fonts
+.netbeans.xml
