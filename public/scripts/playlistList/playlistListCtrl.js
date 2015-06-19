@@ -12,14 +12,14 @@ angular
 
       $scope.playlistMenu = [
         { icon: 'fa-play', action: 'play', text: 'Play' },
-        { icon: 'fa-th-list', action: 'show', text: 'Show' }
       ];
       $scope.itemClick = function(playlist, item) {
         if (item.action === 'play') {
           PlaylistService.play(playlist);
-        } else if (item.action === 'show') {
-          $location.path('/playlists/' + playlist.index);
         }
+      };
+      $scope.openPlaylist = function(playlist) {
+        $location.path('/playlists/' + playlist.index);
       };
 
     }

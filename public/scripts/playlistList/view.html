@@ -5,7 +5,7 @@
 
 <table class="table playlists">
   <tr ng-repeat="playlist in playlists" ng-mouseover="active = true" ng-mouseout="active = false" ng-class="{active: active}">
-    <td>
+    <td ng-click="openPlaylist(playlist)">
       {{ playlist.name }}
     </td>
     <td>
