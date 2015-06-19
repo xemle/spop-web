@@ -1,9 +1,9 @@
 <table class="table tracks">
   <tr ng-repeat="track in trackList track by $index" ng-class="trackClass(track)">
     <td>
-      <div afkl-lazy-image="/spop/uimage/{{ track.uri }}" afkl-lazy-image-options="{className: 'track-cover'}"></div>
+      <div afkl-lazy-image="/spop/uimage/{{ track.uri }}" afkl-lazy-image-options="{className: 'track-cover'}" long-click="play(track)" ></div>
     </td>
-    <td long-click="play(track)" >
+    <td>
       <p>{{ track.title }}<br>
         <small>{{ track.artist }} - {{ track.album }}</small></p>
     </td>
