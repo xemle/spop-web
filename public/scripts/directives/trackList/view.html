@@ -1,5 +1,5 @@
 <table class="table tracks">
-  <tr ng-repeat="track in trackList" ng-class="trackClass(track)">
+  <tr ng-repeat="track in trackList track by $index" ng-class="trackClass(track)">
     <td>
       <div afkl-lazy-image="/spop/uimage/{{ track.uri }}" afkl-lazy-image-options="{className: 'track-cover'}"></div>
     </td>
