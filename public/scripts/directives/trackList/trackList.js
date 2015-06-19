@@ -3,7 +3,8 @@
 angular
   .module('app')
   .directive('trackList', [
-    function() {
+    'QueueService',
+    function(QueueService) {
       return {
         scope: {
           trackList: '=',
@@ -17,6 +18,9 @@ angular
           scope.itemClick = function(data, item) {
             scope.trackMenuClick(data, item);
           };
+          scope.play = function(track) {
+            QueueService.playTrack(track);
+          }
         }
       };
     }

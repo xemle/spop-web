@@ -7,7 +7,8 @@ angular
     '$http',
     'StatusService',
     'QueueModel',
-    function($rootScope, $http, StatusService, QueueModel) {
+    'QueueStateModel',
+    function($rootScope, $http, StatusService, QueueModel, QueueStateModel) {
       return {
         get: function() {
           return $http.get('/spop/qls').then(function(response) {
@@ -31,7 +32,7 @@ angular
         },
         goto: function(track) {
           return $http.get('/spop/goto ' + track.index).then(function(response) {
-            return new QueueModel(response.data);
+            return new QueueStateModel(response.data);
           });
         },
         clear: function() {
@@ -40,7 +41,7 @@ angular
         addTrack: function(track) {
           return $http.get('/spop/uadd ' + track.uri).then(function(response) {
             $rootScope.$emit('queue:change');
-            return response;
+            return new QueueStateModel(response.data);
           });
         },
         playTrack: function(track) {
@@ -54,6 +55,11 @@ angular
                 if (queueStatus.status !== 'playing') {
                   return _this.toggle();
                 }
+              });
+            } else {
+              // Track is not in the queue. We add and play it
+              _this.addTrack(track).then(function() {
+                _this.playTrack(track);
               });
             }
           });
