@@ -5,10 +5,11 @@ angular
   .factory('QueueService', [
     '$rootScope',
     '$http',
+    '$q',
     'StatusService',
     'QueueModel',
     'QueueStateModel',
-    function($rootScope, $http, StatusService, QueueModel, QueueStateModel) {
+    function($rootScope, $http, $q, StatusService, QueueModel, QueueStateModel) {
       return {
         get: function() {
           return $http.get('/spop/qls').then(function(response) {
@@ -42,6 +43,17 @@ angular
           return $http.get('/spop/uadd ' + track.uri).then(function(response) {
             $rootScope.$emit('queue:change');
             return new QueueStateModel(response.data);
+          });
+        },
+        addTracks: function(tracks) {
+          var promises = [];
+
+          angular.forEach(tracks, function(track) {
+            promises.push($http.get('/spop/uadd ' + track.uri));
+          }, this);
+          return $q.all(promises).then(function(result) {
+            $rootScope.$emit('queue:change');
+            return result;
           });
         },
         playTrack: function(track) {

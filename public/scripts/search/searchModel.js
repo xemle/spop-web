@@ -20,6 +20,10 @@ angular
         this.playlists = this.playlists || [];
       }
 
+      SearchModel.prototype.isEmpty = function() {
+        return this.tracks.length === 0;
+      };
+
       return SearchModel;
     }
   ]);

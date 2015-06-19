@@ -5,10 +5,9 @@ angular
   .controller('SearchCtrl', [
     '$scope',
     '$location',
-    'SearchService',
     'QueueService',
     'search',
-    function($scope, $location, SearchService, QueueService, search) {
+    function($scope, $location, QueueService, search) {
       $scope.search = search;
 
       if ($location.search().q) {
@@ -47,5 +46,13 @@ angular
         }
       };
 
+      $scope.playTracks = function(tracks) {
+        if (!tracks.length) {
+          return;
+        }
+        QueueService.addTracks(tracks).then(function() {
+          QueueService.playTrack(tracks[0]);
+        });
+      };
     }
   ]);

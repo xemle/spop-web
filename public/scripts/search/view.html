@@ -13,4 +13,9 @@
 
 <p></p>
 
+<p ng-if="!search.isEmpty()">
+  Found {{ search.tracks.length }} Tracks. <a ng-click="playTracks(search.tracks)">Play all tracks</a>
+</p>
+<p ng-if="search.isEmpty()">Nothing found</p>
+
 <div track-list="search.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
