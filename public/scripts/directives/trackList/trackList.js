@@ -3,8 +3,7 @@
 angular
   .module('app')
   .directive('trackList', [
-    '$dropdown',
-    function($dropdown) {
+    function() {
       return {
         scope: {
           trackList: '=',
