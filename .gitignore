@@ -6,3 +6,4 @@ dist
 .tmp
 public/fonts
 .netbeans.xml
+public/styles/app.css
