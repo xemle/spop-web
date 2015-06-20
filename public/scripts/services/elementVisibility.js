@@ -4,10 +4,12 @@ angular
     '$window',
     '$document',
     '$rootScope',
+    '$timeout',
     'debounce',
     'throttle',
-    function($window, $document, $rootScope, debounce, throttle) {
+    function($window, $document, $rootScope, $timeout, debounce, throttle) {
       var elements = [],
+          newElements = [],
           visibleView = getVisibleView(),
           documentSize = getDocumentSize();
 
@@ -17,7 +19,7 @@ angular
         if ($document.body && $document.body.offsetWidth) {
           width = $document.body.offsetWidth;
           height = $document.body.offsetHeight;
-        } else if ($document.compatMode === 'CSS1Compat' &&    $document.documentElement && $document.documentElement.offsetWidth ) {
+        } else if ($document.compatMode === 'CSS1Compat' && $document.documentElement && $document.documentElement.offsetWidth ) {
           width = $document.documentElement.offsetWidth;
           height = $document.documentElement.offsetHeight;
         } else if ($window.innerWidth && $window.innerHeight) {
@@ -57,8 +59,7 @@ angular
       }
 
       function getDocumentSize() {
-        var d = $document[0],
-            body = d.body,
+        var body = $document[0].body,
             width, height;
         if (body.offsetHeight) {
           height = body.offsetHeight;
@@ -73,40 +74,42 @@ angular
         return documentSize;
       }
 
-      function isRectVisible(rect, visibleView) {
-         return !(rect.bottom < visibleView.top ||
-            rect.top > visibleView.bottom ||
-            rect.right < visibleView.left ||
-            rect.left > visibleView.right);
+      function isElementVisible(element, visibleView) {
+         return !(element.rect.bottom < visibleView.top ||
+            element.rect.top > visibleView.bottom ||
+            element.rect.right < visibleView.left ||
+            element.rect.left > visibleView.right);
       }
 
       function getElementRect(element, options) {
-        options = options || {};
         var left, top, right, bottom, rect;
         if (element.offsetLeft) {
-          left = element.offsetLeft - (options.left || 0);
-          top = element.offsetTop - (options.top || 0);
-          right = element.offsetLeft + element.offsetWidth + (options.right || 0);
-          bottom = element.offsetTop + element.offsetHeight + (options.bottom || 0);
+          left = element.offsetLeft;
+          top = element.offsetTop;
+          right = element.offsetLeft + element.offsetWidth;
+          bottom = element.offsetTop + element.offsetHeight;
         } else {
           rect = element.getBoundingClientRect();
-          left = rect.left - (options.left || 0);
-          top = rect.top - (options.top || 0);
-          right = rect.left + rect.width + (options.right || 0);
-          bottom = rect.top + rect.height + (options.bottom || 0);
+          left = rect.left;
+          top = rect.top;
+          right = rect.left + rect.width;
+          bottom = rect.top + rect.height;
         }
         return {
-          left: left,
-          top: top,
-          right: right,
-          bottom: bottom
+          left: left - (options.left || 0),
+          top: top - (options.top || 0),
+          right: right + (options.right || 0),
+          bottom: bottom + (options.bottom || 0)
         };
       }
 
-      function evaluate() {
+      /**
+       * Evaluate element visibilities and call callback functions
+       */
+      function evaluateVisiblity() {
         visibleView = getVisibleView();
         angular.forEach(elements, function(e) {
-          var isVisible = isRectVisible(e.rect, visibleView);
+          var isVisible = isElementVisible(e, visibleView);
           if (e.isVisible && !isVisible) {
             e.hide(e.element);
             e.isVisible = isVisible;
@@ -117,43 +120,80 @@ angular
         });
       }
 
-      function calculateRects() {
+      function recalculateRects() {
         angular.forEach(elements, function(e) {
           e.rect = getElementRect(e.element, e.options);
-        })
+        });
       }
 
-      angular.element($window).on('scroll', throttle(function() {
-        evaluate();
+      function deferAdd() {
+        angular.forEach(newElements, function(e) {
+          e.rect = getElementRect(e.element, e.options),
+          e.isVisible = isElementVisible(e.rect, visibleView);
+          if (e.isVisible) {
+            e.show(e.element);
+          } else {
+            e.hide(e.element);
+          }
+          elements.push(e);
+        });
+        newElements = [];
+      }
+
+      $window.on('scroll', throttle(function() {
+        evaluateVisiblity();
       }, 250, true)).on('resize', debounce(function() {
-        calculateRects();
-        evaluate();
+        recalculateRects();
+        evaluateVisiblity();
       }));
       $rootScope.$watch(getDocumentSize, debounce(function() {
-        calculateRects();
-        evaluate();
+        recalculateRects();
+        evaluateVisiblity();
       }));
 
       return {
+        /**
+         * Add a DOM element to visibility serivce.
+         *
+         * @param {DOM} element
+         * @param {function} showCb Callback function if element becomes visible
+         * @param {function} hideCb Callback function if element becomes hidden
+         * @param {object} options
+         *  - top: Offset of elements top position. E.g. {top: 100} gives reduces
+         *    the top position by 100 and the showCb function is called ealier
+         *  - left: Offset of elements left position
+         *  - right: Offset of elements right position
+         *  - bottom: Offset of elements bottom position
+         * @returns {function} Function to remove element form visibility check.
+         * This is helpful to remove the element from visibility service on
+         * scope's destroy function
+         */
         add: function(element, showCb, hideCb, options) {
           options = options || {};
-          var rect = getElementRect(element, options),
-              isVisible = isRectVisible(rect, visibleView);
 
-          elements.push({
+          // Evaluation of element rect is expensive. We defer the evaluation
+          // on the next event loop to save time for current loop. This have
+          // positive impact for larger ng-repeat loops
+          if (!newElements.length) {
+            $timeout(deferAdd);
+          }
+
+          newElements.push({
             element: element,
             options: options,
-            rect: rect,
+            rect: false,
+            isVisible: false,
             show: showCb,
-            hide: hideCb,
-            isVisible: isVisible
+            hide: hideCb
           });
-          if (isVisible) {
-            showCb(element);
-          } else {
-            hideCb(element);
-          }
+
+          return this.remove.bind(this, element);
         },
+        /**
+         * Remove DOM element from visibility serivce
+         *
+         * @param {DOM} element
+         */
         remove: function(element) {
           elements = elements.filter(function(e) {
             return e.element !== element;
