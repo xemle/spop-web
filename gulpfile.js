@@ -29,8 +29,8 @@ gulp.task('copyFontsFromBower', function() {
 });
 
 gulp.task('copyFontsToDist', ['copyFontsFromBower'], function() {
-  return gulp.src('public/fonts*')
-    .pipe(gulp.dest('public/fonts'));
+  return gulp.src('public/fonts/*')
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('less', function() {
@@ -42,7 +42,7 @@ gulp.task('less', function() {
     .pipe(gulp.dest('public/styles'));
 });
 
-gulp.task('html', ['less', 'ng-templates'], function() {
+gulp.task('html', ['ng-templates'], function() {
   var assets = useref.assets(),
       sources = gulp.src('.tmp/templates.js');
 
@@ -62,6 +62,6 @@ gulp.task('watch', ['dev'], function() {
   gulp.watch('public/styles/*.less', ['less']);
 });
 
-gulp.task('dist', ['dev', 'html']);
+gulp.task('dist', ['dev', 'html', 'copyFontsToDist']);
 
 gulp.task('default', ['dev']);
