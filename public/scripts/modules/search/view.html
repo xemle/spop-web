@@ -12,10 +12,25 @@
 </div>
 
 <p></p>
-
-<p ng-if="!search.isEmpty()">
-  Found {{ search.tracks.length }} Tracks. <a ng-click="playTracks(search.tracks)">Play all tracks</a>
-</p>
 <p ng-if="search.isEmpty()">Nothing found</p>
 
-<div track-list="search.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
+<div class="btn-group btn-group-justified" role="group" ng-show="!search.isEmpty()">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="show = 'tracks'" ng-class="{'btn-primary': show === 'tracks'}">Tracks ({{search.total_tracks}})</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="show = 'albums'" ng-class="{'btn-primary': show === 'albums'}">Albums ({{search.total_albums}})</button>
+  </div>
+</div>
+
+<div ng-if="show === 'tracks'">
+  <p class="gap">Show {{search.tracks.length}} of {{search.total_tracks}} tracks. <a ng-click="playTracks(search.tracks)">Play all tracks</a></p>
+
+  <div track-list="search.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
+</div>
+
+<div ng-if="show === 'albums'">
+  <p class="gap">Show {{search.albums.length}} of {{search.total_albums}} albums.</p>
+
+  <div album-list="search.albums" ></div>
+</div>

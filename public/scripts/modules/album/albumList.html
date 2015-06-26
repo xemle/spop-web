@@ -1,0 +1,11 @@
+<table class="table">
+  <tr ng-repeat="album in albums">
+    <td>
+      <img src="../images/cover.svg" load-src="/spop/uimage/{{ album.uri }}" width="48" height="48" long-click="playAlbum(album)" />
+    </td>
+    <td ng-click="showAlbum(album)">
+      <p>{{ album.title }}<br>
+        <small>{{ album.artist }}</small></p>
+    </td>
+  </tr>
+</table>

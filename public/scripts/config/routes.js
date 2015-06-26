@@ -10,6 +10,19 @@ angular
           templateUrl: 'scripts/modules/home/view.html',
           controller: 'HomeCtrl'
         }).
+        when('/album/:uri', {
+          templateUrl: 'scripts/modules/album/view.html',
+          controller: 'AlbumCtrl',
+          resolve: {
+            album: [
+              '$route',
+              'AlbumService',
+              function ($route, AlbumService) {
+                return AlbumService.get($route.current.params.uri);
+              }
+            ]
+          }
+        }).
         when('/playlists', {
           templateUrl: 'scripts/modules/playlist/view.html',
           controller: 'PlaylistCtrl',

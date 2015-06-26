@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-4 col-sm-3 col-md-2">
+    <img src="../images/cover.svg" load-src="/spop/uimage/{{ album.uri }}" class="img-responsive" />
+  </div>
+  <div class="col-xs-8 col-sm-9 col-md-10">
+    <h2>{{ album.title }}</h2>
+
+    <p>{{ album.artist }} ({{ album.year }}), {{ album.tracks.length }} tracks</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<div track-list="album.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>

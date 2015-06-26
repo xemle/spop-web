@@ -9,6 +9,7 @@ angular
     'search',
     function($scope, $location, QueueService, search) {
       $scope.search = search;
+      $scope.show = 'tracks';
 
       if ($location.search().q) {
         $scope.term = $location.search().q;
