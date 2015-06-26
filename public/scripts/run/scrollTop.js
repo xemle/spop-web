@@ -7,7 +7,7 @@ angular
     '$anchorScroll',
     function($rootScope, $anchorScroll) {
       $rootScope.$on('$routeChangeSuccess', function() {
-        $anchorScroll('main');
+        $anchorScroll();
       });
     }
   ]);
