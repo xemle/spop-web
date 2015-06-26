@@ -16,7 +16,16 @@ angular
         },
         play: function(playlist) {
           return $http.get('/spop/play ' + playlist.index);
-      }
+        },
+        list: function() {
+          return $http.get('/spop/ls').then(function(response) {
+            var result = [];
+            angular.forEach(response.data.playlists || [], function(data) {
+              result.push(new PlaylistModel(data));
+            });
+            return result;
+          });
+        }
       };
     }
   ]);

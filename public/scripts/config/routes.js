@@ -11,20 +11,33 @@ angular
           controller: 'HomeCtrl'
         }).
         when('/playlists', {
-          templateUrl: 'scripts/playlistList/view.html',
-          controller: 'PlaylistListCtrl',
+          templateUrl: 'scripts/playlist/view.html',
+          controller: 'PlaylistCtrl',
           resolve: {
             playlists: [
-              'PlaylistListService',
-              function (PlaylistListService) {
-                return PlaylistListService.get();
-              }]
+              'PlaylistService',
+              function (PlaylistService) {
+                return PlaylistService.list();
+              }
+            ],
+            playlist: [
+              '$q',
+              function ($q) {
+                return $q.resolve(false);
+              }
+            ]
           }
         }).
         when('/playlists/:playlistId', {
           templateUrl: 'scripts/playlist/view.html',
           controller: 'PlaylistCtrl',
           resolve: {
+            playlists: [
+              '$q',
+              function ($q) {
+                return $q.resolve(false);
+              }
+            ],
             playlist: [
               '$route',
               'PlaylistService',

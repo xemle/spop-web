@@ -7,8 +7,10 @@ angular
     '$location',
     'PlaylistService',
     'QueueService',
+    'playlists',
     'playlist',
-    function($scope, $location, PlaylistService, QueueService, playlist) {
+    function($scope, $location, PlaylistService, QueueService, playlists, playlist) {
+      $scope.playlists = playlists;
       $scope.playlist = playlist;
 
       $scope.play = function() {
