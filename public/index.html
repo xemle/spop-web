@@ -12,7 +12,7 @@
   </head>
 
   <body ng-app="app">
-    <div ng-include="'scripts/quickPlayer/view.html'" ></div>
+    <div ng-include="'scripts/modules/quickPlayer/view.html'" ></div>
     <div class="container" id="main">
       <div class="row">
         <div ng-view class="col-md-12"></div>
@@ -41,33 +41,34 @@
     <!-- build:js({.,public}) scripts/app.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/config/routes.js"></script>
-    <script src="scripts/home/home.js"></script>
-
-    <script src="scripts/status/statusModel.js"></script>
-    <script src="scripts/status/statusService.js"></script>
 
     <script src="scripts/directives/longClick.js"></script>
 
-    <script src="scripts/track/trackModel.js"></script>
-    <script src="scripts/track/trackList.js"></script>
+    <script src="scripts/modules/home/home.js"></script>
 
-    <script src="scripts/playlist/playlistModel.js"></script>
-    <script src="scripts/playlist/playlistService.js"></script>
-    <script src="scripts/playlist/playlistCtrl.js"></script>
-    <script src="scripts/playlist/playlistList.js"></script>
+    <script src="scripts/modules/status/statusModel.js"></script>
+    <script src="scripts/modules/status/statusService.js"></script>
 
-    <script src="scripts/queue/queueModel.js"></script>
-    <script src="scripts/queue/queueService.js"></script>
-    <script src="scripts/queue/queueCtrl.js"></script>
+    <script src="scripts/modules/track/trackModel.js"></script>
+    <script src="scripts/modules/track/trackList.js"></script>
 
-    <script src="scripts/search/searchModel.js"></script>
-    <script src="scripts/search/searchService.js"></script>
-    <script src="scripts/search/searchCtrl.js"></script>
+    <script src="scripts/modules/playlist/playlistModel.js"></script>
+    <script src="scripts/modules/playlist/playlistService.js"></script>
+    <script src="scripts/modules/playlist/playlistCtrl.js"></script>
+    <script src="scripts/modules/playlist/playlistList.js"></script>
 
-    <script src="scripts/menu/menuCtrl.js"></script>
-    <script src="scripts/quickPlayer/queueCtrl.js"></script>
+    <script src="scripts/modules/queue/queueModel.js"></script>
+    <script src="scripts/modules/queue/queueService.js"></script>
+    <script src="scripts/modules/queue/queueCtrl.js"></script>
 
-    <script src="scripts/debug/debug.js"></script>
+    <script src="scripts/modules/search/searchModel.js"></script>
+    <script src="scripts/modules/search/searchService.js"></script>
+    <script src="scripts/modules/search/searchCtrl.js"></script>
+
+    <script src="scripts/modules/menu/menuCtrl.js"></script>
+    <script src="scripts/modules/quickPlayer/queueCtrl.js"></script>
+
+    <script src="scripts/modules/debug/debug.js"></script>
 
     <script src="scripts/run/startStatusService.js"></script>
     <script src="scripts/run/visibilityEvents.js"></script>

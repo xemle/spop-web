@@ -18,7 +18,7 @@ angular
       });
 
       $scope.openMenu = function() {
-        $aside({template: 'scripts/menu/view.html', placement: 'top-left'});
+        $aside({template: 'scripts/modules/menu/view.html', placement: 'top-left'});
       };
 
       $scope.prev = QueueService.prev;

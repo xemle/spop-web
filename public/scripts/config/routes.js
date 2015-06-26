@@ -7,11 +7,11 @@ angular
     function($routeProvider) {
       $routeProvider.
         when('/', {
-          templateUrl: 'scripts/home/view.html',
+          templateUrl: 'scripts/modules/home/view.html',
           controller: 'HomeCtrl'
         }).
         when('/playlists', {
-          templateUrl: 'scripts/playlist/view.html',
+          templateUrl: 'scripts/modules/playlist/view.html',
           controller: 'PlaylistCtrl',
           resolve: {
             playlists: [
@@ -29,7 +29,7 @@ angular
           }
         }).
         when('/playlists/:playlistId', {
-          templateUrl: 'scripts/playlist/view.html',
+          templateUrl: 'scripts/modules/playlist/view.html',
           controller: 'PlaylistCtrl',
           resolve: {
             playlists: [
@@ -48,7 +48,7 @@ angular
           }
         }).
         when('/queue', {
-          templateUrl: 'scripts/queue/view.html',
+          templateUrl: 'scripts/modules/queue/view.html',
           controller: 'QueueCtrl',
           resolve: {
             queue: [
@@ -66,7 +66,7 @@ angular
           }
         }).
         when('/search', {
-          templateUrl: 'scripts/search/view.html',
+          templateUrl: 'scripts/modules/search/view.html',
           controller: 'SearchCtrl',
           resolve: {
             search: [
@@ -80,7 +80,7 @@ angular
           }
         }).
         when('/debug', {
-          templateUrl: 'scripts/debug/view.html',
+          templateUrl: 'scripts/modules/debug/view.html',
           controller: 'DebugCtrl'
         }).
         otherwise({
