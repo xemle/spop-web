@@ -8,6 +8,7 @@ angular
         angular.forEach(data, function(value, key) {
           this[key] = value;
         }, this);
+        this.tracks = (this.tracks || []).slice(0, 100);
       }
 
       ArtistModel.createList = function(artists) {
