@@ -5,6 +5,5 @@ angular
     'ngAnimate',
     'ngTouch',
     'mgcrea.ngStrap.dropdown',
-    'mgcrea.ngStrap.aside',
-    'afkl.lazyImage'
+    'mgcrea.ngStrap.aside'
   ]);
