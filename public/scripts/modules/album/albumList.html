@@ -7,5 +7,8 @@
       <p>{{ album.title }}<br>
         <small>{{ album.artist }}</small></p>
     </td>
+    <td>
+      <button type="button" class="btn btn-default" data-animation="am-flip-x" data-bs-dropdown="{data: album, items: menu}" data-template="scripts/modules/track/menu.html" data-html="1" data-placement="auto top-left"><span class="caret"></span></button>
+    </td>
   </tr>
 </table>

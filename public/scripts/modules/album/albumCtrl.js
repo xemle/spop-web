@@ -15,17 +15,24 @@ angular
         { icon: 'fa-plus', action: 'append', text: 'Append' },
         { icon: 'fa-music', action: 'title', text: 'Search title' }
       ];
-      $scope.trackMenuClick = function(track, item) {
+      $scope.trackMenuClick = function(album, item) {
         if (item.action === 'play') {
-          QueueService.addTrack(track).then(function() {
-            QueueService.playTrack(track);
-          });
+          $scope.playAlbum(album);
         } else if (item.action === 'append') {
-          QueueService.addTrack(track);
+          $scope.addAlbum(album);
         } else if (item.action === 'title') {
-          $location.search({q: 'track:\'' + track.title + '\''});
+          $location.search({q: album.title});
           $location.path('/search');
         }
       };
+
+      $scope.playAlbum = function(album) {
+        QueueService.playAlbum(album);
+      };
+      $scope.addAlbum = function(album) {
+        QueueService.addAlbum(album);
+      };
+
+
     }
   ]);

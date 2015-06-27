@@ -6,6 +6,11 @@
     <h2>{{ album.title }}</h2>
 
     <p>{{ album.artist }} ({{ album.year }}), {{ album.tracks.length }} tracks</p>
+
+    <p>
+      <button class="btn btn-default" ng-click="playAlbum(album)"><i class="fa fa-play"></i> Play</button>
+      <button class="btn btn-default" ng-click="addAlbum(album)"><i class="fa fa-plus"></i> Add</button>
+    </p>
   </div>
 </div>
 

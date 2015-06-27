@@ -104,7 +104,18 @@ angular
               });
             }
           });
-
+        },
+        addAlbum: function(album) {
+          return $http.get('/spop/uadd ' + album.uri).then(function(response) {
+            $rootScope.$emit('queue:change');
+            return response;
+          });
+        },
+        playAlbum: function(album) {
+          return $http.get('/spop/uplay ' + album.uri).then(function(response) {
+            $rootScope.$emit('queue:change');
+            return response;
+          });
         }
       };
     }
