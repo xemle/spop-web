@@ -10,7 +10,6 @@ angular
     function($scope, $location, QueueService, artist) {
       $scope.artist = artist;
       $scope.show = 'tracks';
-      console.log(artist);
 
       $scope.trackMenu = [
         { icon: 'fa-play', action: 'play', text: 'Play' },
