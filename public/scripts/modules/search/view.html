@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div ng-if="show === 'tracks'">
+<div ng-if="show === 'tracks' && search.tracks.length">
   <p class="gap">Show {{search.tracks.length}} of {{search.total_tracks}} tracks. <a ng-click="playTracks(search.tracks)">Play all tracks</a></p>
 
   <div track-list="search.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
