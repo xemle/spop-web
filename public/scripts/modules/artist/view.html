@@ -1,0 +1,19 @@
+<h2>{{ artist.artist }}</h2>
+
+<div class="btn-group btn-group-justified" role="group" >
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="show = 'tracks'" ng-class="{'btn-primary': show === 'tracks'}">Tracks ({{artist.tracks.length}})</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="show = 'albums'" ng-class="{'btn-primary': show === 'albums'}">Albums ({{artist.albums.length}})</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="show = 'similarArtists'" ng-class="{'btn-primary': show === 'similarArtists'}">Similar Artists ({{artist.similar_artists.length}})</button>
+  </div>
+</div>
+
+<div ng-if="show === 'tracks'" track-list="artist.tracks" ></div>
+
+<div ng-if="show === 'albums'" album-list="artist.albums" ></div>
+
+<div ng-if="show === 'similarArtists'" artist-list="artist.similar_artists" ></div>

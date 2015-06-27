@@ -23,6 +23,19 @@ angular
             ]
           }
         }).
+        when('/artist/:uri', {
+          templateUrl: 'scripts/modules/artist/view.html',
+          controller: 'ArtistCtrl',
+          resolve: {
+            artist: [
+              '$route',
+              'ArtistService',
+              function($route, ArtistService) {
+                return ArtistService.get($route.current.params.uri);
+              }
+            ]
+          }
+        }).
         when('/playlists', {
           templateUrl: 'scripts/modules/playlist/view.html',
           controller: 'PlaylistCtrl',
