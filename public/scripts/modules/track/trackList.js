@@ -15,7 +15,7 @@ angular
           trackMenuClick: '=',
           track: '='
         },
-        templateUrl: 'scripts/modules/track/view.html',
+        templateUrl: 'scripts/modules/track/trackList.html',
         link: function(scope) {
           scope.itemClick = function(data, item) {
             scope.trackMenuClick(data, item);
