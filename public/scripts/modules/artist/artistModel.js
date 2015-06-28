@@ -3,9 +3,22 @@
 angular
   .module('app')
   .factory('ArtistModel', [
-    function () {
+    'TrackModel',
+    'AlbumModel',
+    function (TrackModel, AlbumModel) {
       function ArtistModel(data) {
         angular.forEach(data, function(value, key) {
+          if (key === 'tracks') {
+            value = TrackModel.createList(value);
+            value.sort(function(a, b) {
+              return b.popularity - a.popularity;
+            });
+          } else if (key === 'albums') {
+            value = AlbumModel.createList(value);
+            value.sort(function(a, b) {
+              return b.popularity - a.popularity;
+            });
+          }
           this[key] = value;
         }, this);
         this.tracks = (this.tracks || []).slice(0, 100);
