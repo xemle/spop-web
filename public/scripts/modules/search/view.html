@@ -18,10 +18,10 @@
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-default" ng-click="show = 'tracks'" ng-class="{'btn-primary': show === 'tracks'}">Tracks ({{search.total_tracks}})</button>
   </div>
-  <div class="btn-group" role="group">
+  <div class="btn-group" role="group" ng-show="search.total_albums">
     <button type="button" class="btn btn-default" ng-click="show = 'albums'" ng-class="{'btn-primary': show === 'albums'}">Albums ({{search.total_albums}})</button>
   </div>
-  <div class="btn-group" role="group">
+  <div class="btn-group" role="group" ng-show="search.total_artists">
     <button type="button" class="btn btn-default" ng-click="show = 'artists'" ng-class="{'btn-primary': show === 'artists'}">Artists ({{search.total_artists}})</button>
   </div>
 </div>
@@ -39,7 +39,7 @@
 </div>
 
 <div ng-if="show === 'artists'">
-  <p>Show {{search.artists.length}} of {{search.total_artists}} artists.</p>
+  <p class="gap">Show {{search.artists.length}} of {{search.total_artists}} artists.</p>
 
   <div artist-list="search.artists" ></div>
 </div>
