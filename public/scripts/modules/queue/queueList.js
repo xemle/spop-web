@@ -2,7 +2,7 @@
 
 angular
   .module('app')
-  .directive('trackList', [
+  .directive('queueList', [
     '$rootScope',
     '$location',
     'StatusService',
@@ -10,11 +10,13 @@ angular
     function($rootScope, $location, StatusService, QueueService) {
       return {
         scope: {
-          trackList: '=',
+          tracks: '=queueList'
         },
-        templateUrl: 'scripts/modules/track/trackList.html',
+        templateUrl: 'scripts/modules/queue/queueList.html',
         link: function(scope) {
-
+          scope.itemClick = function(data, item) {
+            scope.trackMenuClick(data, item);
+          };
           scope.items = [
             { icon: 'fa-play', action: 'play', text: 'Play' },
             { icon: 'fa-music', action: 'title', text: 'Search title' },
@@ -38,13 +40,13 @@ angular
               $location.path('/search');
             }
           };
+
           scope.trackClass = function(track) {
             if (scope.status && scope.status.isPlaying() && scope.status.uri === track.uri) {
               return {active: true};
             }
             return {};
           };
-
           scope.play = function(track) {
             QueueService.playTrack(track);
           };

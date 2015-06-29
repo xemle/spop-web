@@ -29,34 +29,6 @@ angular
         });
       };
 
-      $scope.trackMenu = [
-        { icon: 'fa-play', action: 'play', text: 'Play' },
-        { icon: 'fa-music', action: 'title', text: 'Search title' },
-        { icon: 'fa-user', action: 'artist', text: 'Search artist' },
-        { icon: 'fa-play-circle', action: 'album', text: 'Search album' },
-        { icon: 'fa-trash-o', action: 'remove', text: 'Remove' }
-      ];
-      $scope.trackMenuClick = function(track, item) {
-        if (item.action === 'play') {
-          QueueService.goto(track);
-        } else if (item.action === 'remove') {
-          QueueService.removeTrack(track);
-        } else if (item.action === 'title') {
-          $location.search({q: 'track:\'' + track.title + '\''});
-          $location.path('/search');
-        } else if (item.action === 'artist') {
-          $location.search({q: 'artist:\'' + track.artist.replace(/,.*/, '') + '\''});
-          $location.path('/search');
-        } else if (item.action === 'album') {
-          $location.search({q: 'album:\'' + track.album + '\''});
-          $location.path('/search');
-        }
-      };
-      $scope.trackClass = function(track) {
-        return {
-          active: track.index === $scope.currentTrack
-        };
-      };
 
       function setStatus(status) {
         $scope.status = status;

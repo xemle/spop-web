@@ -1,5 +1,5 @@
 <table class="table tracks">
-  <tr ng-repeat="track in trackList track by $index" ng-class="$trackClass(track)">
+  <tr ng-repeat="track in tracks track by $index" ng-class="trackClass(track)">
     <td>
       <img src="../images/cover.svg" load-src="/spop/uimage/{{ track.uri }}" width="64" height="64" long-click="play(track)" />
     </td>
