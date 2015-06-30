@@ -1,5 +1,25 @@
 <h2>Queue</h2>
 
+<div class="row">
+  <div class="col-xs-4 col-sm-3 col-md-2">
+    <img src="../images/cover.svg" load-src="/spop/uimage/{{ status.uri }}" class="img-responsive" />
+  </div>
+  <div class="col-xs-8 col-sm-9 col-md-10">
+    <h2>{{ status.title || '' }}</h2>
+
+    <p><span ng-if="status.artist">{{ status.artist }} - {{ status.album }}</span></p>
+
+    <p>
+      <button class="btn btn-default" ng-click="prev()"><i class="fa fa-step-backward"></i></button>
+      <button class="btn btn-default" ng-click="toggle()"><i class="fa" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying()}"></i></button>
+      <button class="btn btn-default" ng-click="next()"><i class="fa fa-step-forward"></i></button>
+      <button class="btn btn-default" ng-click="clear()"><i class="fa fa-trash"></i></button>
+    </p>
+  </div>
+</div>
+
+<div class="col-md-12 gap"></div>
+
 <p ng-if="!queue.tracks.length">Queue list is empty</p>
 
 <div queue-list="queue.tracks" ></div>
