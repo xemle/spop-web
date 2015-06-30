@@ -4,7 +4,11 @@ angular
   .module('app')
   .controller('MenuCtrl', [
     '$scope',
-    function($scope) {
-      $scope.title = 'Menu';
+    '$location',
+    function($scope, $location) {
+      $scope.open = function(path) {
+        $scope.$hide();
+        $location.path(path);
+      };
     }
   ]);
