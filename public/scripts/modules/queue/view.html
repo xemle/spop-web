@@ -1,13 +1,5 @@
-<ol class="breadcrumb">
-  <li><a href="#/">Home</a></li>
-  <li class="active">Queue</li>
-</ol>
+<h2>Queue</h2>
 
-<a ng-click="prev()" class="btn btn-default"><i class="fa fa-step-backward"></i></a>
-<a ng-click="toggle()" class="btn btn-default"><i class="fa" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying() }"></i></a>
-<a ng-click="next()" class="btn btn-default"><i class="fa fa-step-forward"></i></a>
-
-<a ng-click="clear()" class="btn btn-default"><i class="fa fa-trash-o"></i></a>
-
+<p ng-if="!queue.tracks.length">Queue list is empty</p>
 
 <div queue-list="queue.tracks" ></div>

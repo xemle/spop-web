@@ -6,10 +6,6 @@ angular
     '$routeProvider',
     function($routeProvider) {
       $routeProvider.
-        when('/', {
-          templateUrl: 'scripts/modules/home/view.html',
-          controller: 'HomeCtrl'
-        }).
         when('/album/:uri', {
           templateUrl: 'scripts/modules/album/view.html',
           controller: 'AlbumCtrl',
@@ -110,6 +106,6 @@ angular
           controller: 'DebugCtrl'
         }).
         otherwise({
-          redirectTo: '/'
+          redirectTo: '/playlists'
         });
     }]);

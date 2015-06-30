@@ -1,9 +1,7 @@
-<ol class="breadcrumb">
-  <li><a href="#/">Home</a></li>
-  <li ng-if="!playlist" class="active">Playlists</li>
-  <li ng-if="playlist"><a href="#/playlists">Playlists</a></li>
-  <li ng-if="playlist" class="active">{{playlist.name}}</li>
-</ol>
+<h2 ng-if="!playlist">Playlists</h2>
+<h2 ng-if="playlist">{{playlist.name}}</h2>
+
+<a ng-if="playlist" href="#/playlists" class="gap">List Playlists</a>
 
 <div ng-if="!playlist" playlist-list="playlists"></div>
 <div ng-if="playlist" track-list="playlist.tracks" track-menu="trackMenu" track-menu-click="trackMenuClick"></div>
