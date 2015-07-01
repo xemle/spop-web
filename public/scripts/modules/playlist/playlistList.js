@@ -12,7 +12,7 @@ angular
         },
         templateUrl: 'scripts/modules/playlist/playlistList.html',
         link: function(scope) {
-          scope.playlistMenu = [
+          scope.items = [
             { icon: 'fa-play', action: 'play', text: 'Play' }
           ];
           scope.itemClick = function(playlist, item) {

@@ -4,7 +4,7 @@
       {{ playlist.name }}
     </td>
     <td>
-      <button type="button" class="btn btn-default" data-animation="am-flip-x" data-bs-dropdown="{data: playlist, items: playlistMenu}" data-template="scripts/modules/track/menu.html" data-html="1" data-placement="auto top-left"><span class="caret"></span></button>
+      <button type="button" class="btn btn-default" dropdown="playlist" dropdown-items="items" dropdown-item-click="itemClick(data, item)"><span class="caret"></span></button>
     </td>
   </tr>
 </table>

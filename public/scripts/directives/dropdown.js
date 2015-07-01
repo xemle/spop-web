@@ -39,7 +39,8 @@ angular
               dropdown = $dropdown(element, options);
               dropdown.$scope.items = scope.items;
               dropdown.$scope.itemClick = function(item) {
-                scope.itemClick({track: scope.data, item: item});
+                dropdown.hide();
+                scope.itemClick({data: scope.data, item: item});
               };
               dropdown.$scope.$on('$destroy', function() {
                 dropdown = false;
