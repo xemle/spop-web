@@ -12,7 +12,7 @@ angular
         },
         templateUrl: 'scripts/modules/album/albumList.html',
         link: function(scope) {
-          scope.menu = [
+          scope.items = [
             { icon: 'fa-play', action: 'play', text: 'Play' },
             { icon: 'fa-plus', action: 'append', text: 'Append' },
             { icon: 'fa-music', action: 'title', text: 'Search title' },
