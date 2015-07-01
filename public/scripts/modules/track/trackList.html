@@ -1,7 +1,7 @@
 <table class="table tracks">
   <tr ng-repeat="track in trackList track by $index" ng-class="trackClass(track)">
     <td>
-      <img src="../images/cover.svg" load-src="/spop/uimage/{{ track.uri }}" width="64" height="64" long-click="play(track)" />
+      <img src="../images/cover.svg" load-src="{{ src }}" visible="src = '/spop/uimage/' + track.uri" visible-options="{top: 150}" width="48" height="48" long-click="play(track)" />
     </td>
     <td>
       <p>{{ track.title }}<br>

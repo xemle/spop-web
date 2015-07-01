@@ -83,18 +83,11 @@ angular
 
       function getElementRect(element, options) {
         var left, top, right, bottom, rect;
-        if (element.offsetLeft) {
-          left = element.offsetLeft;
-          top = element.offsetTop;
-          right = element.offsetLeft + element.offsetWidth;
-          bottom = element.offsetTop + element.offsetHeight;
-        } else {
-          rect = element.getBoundingClientRect();
-          left = rect.left;
-          top = rect.top;
-          right = rect.left + rect.width;
-          bottom = rect.top + rect.height;
-        }
+        rect = element.getBoundingClientRect();
+        left = rect.left;
+        top = rect.top;
+        right = rect.left + rect.width;
+        bottom = rect.top + rect.height;
         return {
           left: left - (options.left || 0),
           top: top - (options.top || 0),
@@ -128,8 +121,8 @@ angular
 
       function deferAdd() {
         angular.forEach(newElements, function(e) {
-          e.rect = getElementRect(e.element, e.options),
-          e.isVisible = isElementVisible(e.rect, visibleView);
+          e.rect = getElementRect(e.element, e.options);
+          e.isVisible = isElementVisible(e, visibleView);
           if (e.isVisible) {
             e.show(e.element);
           } else {
@@ -140,11 +133,15 @@ angular
         newElements = [];
       }
 
-      $window.on('scroll', throttle(function() {
-        evaluateVisiblity();
-      }, 250, true)).on('resize', debounce(function() {
-        recalculateRects();
-        evaluateVisiblity();
+      angular.element($window).bind('scroll', throttle(function() {
+        $rootScope.$apply(function() {
+          evaluateVisiblity();
+        });
+      }, 250, true)).bind('resize', debounce(function() {
+        $rootScope.$apply(function() {
+          recalculateRects();
+          evaluateVisiblity();
+        });
       }));
       $rootScope.$watch(getDocumentSize, debounce(function() {
         recalculateRects();

@@ -9,20 +9,20 @@ angular
           var showExp = $parse(attrs.visible || attrs.onShow),
               hideExp = $parse(attrs.onHide),
               optionsExpr = $parse(attrs.visibleOptions),
-              options = optionsExpr(scope) || {};
+              options = optionsExpr(scope) || {},
+              element = $element[0];
 
           function onShow() {
-            console.log('show', scope.$id, scope);
             showExp(scope);
           }
           function onHide() {
             hideExp(scope);
           }
 
-          $elementVisibility.add($element[0], onShow, onHide, options);
+          $elementVisibility.add(element, onShow, onHide, options);
 
           scope.$on('$destroy', function() {
-            $elementVisibility.remove($element[0]);
+            $elementVisibility.remove(element);
           });
         }
       };
