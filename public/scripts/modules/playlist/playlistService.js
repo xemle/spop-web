@@ -17,6 +17,9 @@ angular
         play: function(playlist) {
           return $http.get('/spop/play ' + playlist.index);
         },
+        add: function(playlist) {
+          return $http.get('/spop/add ' + playlist.index);
+        },
         list: function() {
           return $http.get('/spop/ls').then(function(response) {
             var result = [];
