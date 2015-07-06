@@ -33,6 +33,7 @@ like HiFi Berry.
     $ npm install -g bower gulp-cli
     $ npm install
     $ bower install
+    $ gulp
 
 spop web uses:
 
