@@ -49,6 +49,16 @@ spop web uses:
 
 Open your browser at [localhost:3000](http://localhost:3000)
 
+## With Docker
+
+If you don't want to install Node / Bower / Gulp on your local machine, you can
+do all of that in a Docker container:
+
+    $ docker build -t spop-web .
+    $ docker run -ti -p 3000:3000 --net=host --rm spop-web
+
+Then open your browser at [localhost:3000](http://localhost:3000).
+
 ## Contribute
 
 Contributions are welcome. To do so, please:
