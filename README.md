@@ -30,6 +30,8 @@ like HiFi Berry.
 
 ## Installation
 
+    $ git clone https://github.com/xemle/spop-web.git
+    $ cd spop-web
     $ npm install -g bower gulp-cli
     $ npm install
     $ bower install
@@ -48,6 +50,13 @@ spop web uses:
     $ node index.js
 
 Open your browser at [localhost:3000](http://localhost:3000)
+
+### Run Development Mode
+
+By default spop-web uses minified versions of css and javascript files. If you
+are coding some new feature you can serve un-minified files via:
+
+    $ NODE_ENV=dev node.index.js
 
 ## With Docker
 

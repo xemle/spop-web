@@ -6,7 +6,13 @@ var spopOptions = {
   port: 6602
 };
 
-app.use(express.static('public'));
+var isDevelopment = process.env.NODE_ENV && process.env.NODE_ENV.match(/^dev/i);
+
+if (!isDevelopment) {
+  app.use(express.static('dist'));
+} else {
+  app.use(express.static('public'));
+}
 
 app.use('/spop', spopMiddleware(spopOptions));
 

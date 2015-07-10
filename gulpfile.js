@@ -71,4 +71,4 @@ gulp.task('watch', ['dev'], function() {
 
 gulp.task('dist', ['dev', 'html', 'copyFontsToDist', 'copyImages']);
 
-gulp.task('default', ['dev']);
+gulp.task('default', ['dist']);
