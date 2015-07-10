@@ -33,6 +33,11 @@ gulp.task('copyFontsToDist', ['copyFontsFromBower'], function() {
     .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('copyImages', function() {
+  return gulp.src('public/images/*')
+    .pipe(gulp.dest('dist/images'));
+});
+
 gulp.task('less', function() {
   gulp
     .src('public/styles/app.less') // This was the line that needed fixing
@@ -62,6 +67,6 @@ gulp.task('watch', ['dev'], function() {
   gulp.watch('public/styles/*.less', ['less']);
 });
 
-gulp.task('dist', ['dev', 'html', 'copyFontsToDist']);
+gulp.task('dist', ['dev', 'html', 'copyFontsToDist', 'copyImages']);
 
 gulp.task('default', ['dev']);
