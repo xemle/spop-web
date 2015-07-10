@@ -12,7 +12,7 @@ app.use(compression());
 app.use('/spop', spopMiddleware(spopOptions));
 
 if (!isDevelopment) {
-  app.use(express.static('dist'));
+  app.use(express.static('dist', {maxAge: '1d'}));
 } else {
   app.use(express.static('public'));
 }
