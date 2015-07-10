@@ -8,6 +8,10 @@
   },
   "author": "Xemle <xemle@phtagr.org>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xemle/spop-web.git"
+  },
   "dependencies": {
     "express": "^4.12.4",
     "gulp": "^3.9.0",
