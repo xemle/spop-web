@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     useref = require('gulp-useref'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
+    annotate = require('gulp-ng-annotate'),
     minifyCss = require('gulp-minify-css'),
     minifyHtml = require('gulp-minify-html'),
     templateCache = require('gulp-angular-templatecache'),
@@ -54,6 +55,7 @@ gulp.task('html', ['ng-templates'], function() {
   return gulp.src('public/*.html')
     .pipe(inject(sources, {addRootSlash: false}))
     .pipe(assets)
+    .pipe(gulpif('*.js', annotate()))
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.css', minifyCss()))
     .pipe(assets.restore())
