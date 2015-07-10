@@ -13,6 +13,7 @@
     "url": "git://github.com/xemle/spop-web.git"
   },
   "dependencies": {
+    "compression": "^1.5.1",
     "express": "^4.12.4",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.6.0",

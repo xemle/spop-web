@@ -1,20 +1,21 @@
-var express = require('express')
+var express = require('express');
+var compression = require('compression');
 var spopMiddleware = require('./lib/spop/middleware');
 var app = express();
 
+var isDevelopment = process.env.NODE_ENV && process.env.NODE_ENV.match(/^dev/i);
 var spopOptions = {
   port: 6602
 };
 
-var isDevelopment = process.env.NODE_ENV && process.env.NODE_ENV.match(/^dev/i);
+app.use(compression());
+app.use('/spop', spopMiddleware(spopOptions));
 
 if (!isDevelopment) {
   app.use(express.static('dist'));
 } else {
   app.use(express.static('public'));
 }
-
-app.use('/spop', spopMiddleware(spopOptions));
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
