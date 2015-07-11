@@ -6,7 +6,7 @@
     <p>Queue<p>
     <h2>{{ status.title || '' }}</h2>
     <p><span ng-if="status.artist">{{ status.artist }} - {{ status.album }}</span></p>
-
+    <div track-timer="status" ng-show="!status.isStopped()"></div>
     <p>
       <button class="btn btn-default" ng-click="prev()"><i class="fa fa-step-backward"></i></button>
       <button class="btn btn-default" ng-click="toggle()"><i class="fa" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying()}"></i></button>

@@ -1,0 +1,22 @@
+.slider {
+  position: relative;
+  margin-left: 7px;
+  margin-right: 7px;
+  .bg,
+  .current {
+    position: absolute;
+    top: 8px;
+    height: 4px;
+  }
+  .bg {
+    background-color: @theme-gray-dark;
+    width: 100%;
+  }
+  .current {
+    background-color: @theme-gray-light;
+  }
+  .icon {
+    position: absolute;
+    margin-left: -9px;
+  }
+}

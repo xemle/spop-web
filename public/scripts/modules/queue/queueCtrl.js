@@ -5,11 +5,10 @@ angular
   .controller('QueueCtrl', [
     '$rootScope',
     '$scope',
-    '$location',
     'QueueService',
     'queue',
     'status',
-    function($rootScope, $scope, $location, QueueService, queue, status) {
+    function($rootScope, $scope, QueueService, queue, status) {
       $scope.queue = queue;
 
       $scope.prev = QueueService.prev;
@@ -28,7 +27,6 @@ angular
           return reloadQueue();
         });
       };
-
 
       function setStatus(status) {
         $scope.status = status;
