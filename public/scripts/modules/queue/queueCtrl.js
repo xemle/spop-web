@@ -28,6 +28,9 @@ angular
         });
       };
 
+      $scope.onSeek = function(position) {
+        return QueueService.seek(position * 1000);
+      };
       function setStatus(status) {
         $scope.status = status;
         $scope.currentTrack = status.current_track;

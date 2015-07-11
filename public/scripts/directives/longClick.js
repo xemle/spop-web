@@ -5,7 +5,8 @@ angular
   .directive('longClick', [
     '$timeout',
     '$parse',
-    function($timeout, $parse) {
+    '$filter',
+    function($timeout, $parse, $filter) {
       return {
         link: function(scope, $element, $attrs) {
           var WAIT_INTERVAL = 500,
@@ -14,23 +15,11 @@ angular
               startPoint,
               timer;
 
-          // Borrowed from ng-touch: https://github.com/angular/angular.js/blob/master/src/ngTouch/swipe.js getCoordinates()
-          function getPoint($event) {
-            var originalEvent = $event.originalEvent || $event;
-            var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
-            var e = (originalEvent.changedTouches && originalEvent.changedTouches[0]) || touches[0];
-
-            return {
-              x: e.clientX,
-              y: e.clientY
-            };
-          }
-
           function start($event) {
             if (timer) {
               return eventBlackhole($event);
             }
-            startPoint = getPoint($event);
+            startPoint = $filter('coordinates')($event);
             timer = $timeout(function() {
               longClickExp(scope);
               timer = false;
@@ -54,7 +43,7 @@ angular
               return eventBlackhole($event);
             }
 
-            var point = getPoint($event),
+            var point = $filter('coordinates')($event),
                 deltaX = startPoint.x - point.x,
                 deltaY = startPoint.y - point.y,
                 delta = Math.sqrt(deltaX * deltaX + deltaY * deltaY);

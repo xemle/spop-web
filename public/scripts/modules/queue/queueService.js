@@ -28,6 +28,11 @@ angular
         toggle: function() {
           return $http.get('/spop/toggle');
         },
+        seek: function(position) {
+          return $http.get('/spop/seek ' + position.toFixed(0)).then(function(response) {
+            return new StatusModel(response.data);
+          });
+        },
         next: function() {
           return $http.get('/spop/next');
         },
