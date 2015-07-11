@@ -32,7 +32,7 @@ angular
             return;
           }
           isRunning = true;
-          doPoll().then(doPoll()).catch(function() {
+          doPoll().catch(function() {
             isRunning = false;
           });
         },
