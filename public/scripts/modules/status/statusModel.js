@@ -30,6 +30,11 @@ angular
         }
         return this.position + (diff / 1000);
       };
+
+      StatusModel.prototype.getRemainingTime = function() {
+        return this.duration - this.getTime();
+      };
+
       return StatusModel;
     }
   ]);

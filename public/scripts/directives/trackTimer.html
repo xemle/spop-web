@@ -1,5 +1,5 @@
 <div class="track-timer">
-  <div class="current">{{ position | timeFormat }}</div>
+  <div class="current" ng-click="changeTimeMode()">{{ getTime() | timeFormat }}</div>
   <div class="track-slider" slider slider-max="duration" slider-position="position" on-slide="onSlide(percent)" on-slide-end="onSlideEnd(percent)"></div>
   <div class="total">{{ duration | timeFormat }}</div>
   <div class="clearfix"></div>

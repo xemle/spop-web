@@ -14,18 +14,19 @@ angular
         return s;
       }
       return function(input) {
-        var time, sec, min, hour;
-        time = (+input).toFixed(0);
+        var time, negPrefix, sec, min, hour;
+        time = Math.abs((+input).toFixed(0));
         sec = time % 60;
         min = ((time - sec) / 60) % 60;
         hour = (time - sec - min * 60) / 3600;
+        negPrefix = (+input) < 0 ? '-' : '';
 
-        if (!input) {
+        if (angular.isUndefined(input)) {
           return '';
         } else if (hour > 0) {
-          return hour + ':' + prefix(min) + ':' + prefix(sec);
+          return negPrefix + hour + ':' + prefix(min) + ':' + prefix(sec);
         } else {
-          return min + ':' + prefix(sec);
+          return negPrefix + min + ':' + prefix(sec);
         }
       };
     }
