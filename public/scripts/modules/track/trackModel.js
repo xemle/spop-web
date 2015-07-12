@@ -8,6 +8,8 @@ angular
         angular.forEach(data, function(value, key) {
           this[key] = value;
         }, this);
+        // spop serves duration in ms. We use seconds.
+        this.duration = (this.duration || 0) / 1000;
       }
 
       TrackModel.createList = function(tracks) {
@@ -17,7 +19,7 @@ angular
         });
         return result;
       };
-      
+
       return TrackModel;
     }
   ]);

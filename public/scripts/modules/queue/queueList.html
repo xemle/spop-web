@@ -4,7 +4,7 @@
       <img src="../images/cover.svg" load-src="/spop/uimage/{{ track.uri }}/1" width="64" height="64" long-click="play(track)" />
     </td>
     <td>
-      <p>{{ track.title }}<br>
+      <p>{{ track.title }} - {{ track.duration | timeFormat }}<br>
         <small>{{ track.artist }} - {{ track.album }}</small></p>
     </td>
     <td>

@@ -4,7 +4,7 @@
       <img src="../images/cover.svg" load-src="{{ src }}" visible="src = '/spop/uimage/' + track.uri + '/1'" visible-options="{top: 150}" width="48" height="48" long-click="play(track)" />
     </td>
     <td>
-      <p>{{ track.title }}<br>
+      <p>{{ track.title }} - {{ track.duration | timeFormat }}<br>
         <small>{{ track.artist }} - {{ track.album }}</small></p>
     </td>
     <td>
