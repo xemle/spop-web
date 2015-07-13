@@ -28,7 +28,7 @@ angular
         if (!this.isPlaying()) {
           return this.position;
         }
-        return this.position + (diff / 1000);
+        return Math.min(this.position + (diff / 1000), this.duration);
       };
 
       StatusModel.prototype.getRemainingTime = function() {
