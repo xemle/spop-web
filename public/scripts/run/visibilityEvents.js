@@ -6,10 +6,15 @@ angular
     '$document',
     '$rootScope',
     function($document, $rootScope) {
+      var last;
+
       function visibilitychanged() {
         var d = $document[0],
             isHidden = d.hidden || d.webkitHidden || d.mozHidden || d.msHidden;
-        $rootScope.$emit('visibility:change', isHidden);
+        if (isHidden !== last) {
+          $rootScope.$emit('visibility:change', isHidden);
+          last = isHidden;
+        }
       }
 
       $document.on('visibilitychange',visibilitychanged);
