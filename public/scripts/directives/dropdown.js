@@ -15,7 +15,7 @@ angular
         link: function(scope, element) {
           var dropdown = false;
 
-          element.bind('click', function() {
+          element.on('click', function() {
             scope.$apply(function() {
               scope.showDropdown();
             });

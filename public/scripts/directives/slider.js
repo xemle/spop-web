@@ -28,10 +28,8 @@ angular
           }
 
           function activate() {
-            body.on('mousemove', onMove);
-            body.on('touchmove', onMove);
-            body.on('mouseup', deactivate);
-            body.on('touchend', deactivate);
+            body.on('mousemove touchmove', onMove);
+            body.on('mouseup touchend', deactivate);
             // Get every time the rect to cover window resizes, too
             getRect();
           };
@@ -54,10 +52,8 @@ angular
             var point = $filter('coordinates')($event),
                 percent = getPercent(point);
 
-            body.off('mousemove', onMove);
-            body.off('touchmove', onMove);
-            body.off('mouseup', deactivate);
-            body.off('touchend', deactivate);
+            body.off('mousemove touchmove', onMove);
+            body.off('mouseup touchend', deactivate);
             $event.preventDefault();
 
             scope.$apply(function() {

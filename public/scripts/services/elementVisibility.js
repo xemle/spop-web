@@ -133,11 +133,11 @@ angular
         newElements = [];
       }
 
-      angular.element($window).bind('scroll', throttle(function() {
+      angular.element($window).on('scroll', throttle(function() {
         $rootScope.$apply(function() {
           evaluateVisiblity();
         });
-      }, 250, true)).bind('resize', debounce(function() {
+      }, 250, true)).on('resize', debounce(function() {
         $rootScope.$apply(function() {
           recalculateRects();
           evaluateVisiblity();

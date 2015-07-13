@@ -66,14 +66,9 @@ angular
             return false;
           }
 
-          $element.on('mousedown', start);
-          $element.on('mousemove', move);
-          $element.on('mouseleave', cancel);
-          $element.on('mouseup', cancel);
-
-          $element.on('touchstart', start);
-          $element.on('touchmove', move);
-          $element.on('touchend', cancel);
+          $element.on('mousedown touchstart', start);
+          $element.on('mousemove touchmove', move);
+          $element.on('mouseleave mouseup touchend', cancel);
         }
       };
     }
