@@ -40,7 +40,7 @@ gulp.task('copyImages', function() {
 });
 
 gulp.task('less', function() {
-  gulp
+  return gulp
     .src('public/styles/app.less') // This was the line that needed fixing
     .pipe(less({
       paths: ['public/styles']
@@ -48,7 +48,7 @@ gulp.task('less', function() {
     .pipe(gulp.dest('public/styles'));
 });
 
-gulp.task('html', ['ng-templates'], function() {
+gulp.task('html', ['less', 'ng-templates'], function() {
   var assets = useref.assets(),
       sources = gulp.src('.tmp/templates.js');
 
@@ -63,12 +63,12 @@ gulp.task('html', ['ng-templates'], function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dev', ['copyFontsFromBower', 'less']);
-
-gulp.task('watch', ['dev'], function() {
+gulp.task('watch', ['less'], function() {
   gulp.watch('public/styles/*.less', ['less']);
 });
 
-gulp.task('dist', ['dev', 'html', 'copyFontsToDist', 'copyImages']);
+gulp.task('dev', ['copyFontsFromBower', 'watch']);
+
+gulp.task('dist', ['html', 'copyFontsToDist', 'copyImages']);
 
 gulp.task('default', ['dist']);

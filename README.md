@@ -58,6 +58,12 @@ are coding some new feature you can serve un-minified files via:
 
     $ NODE_ENV=dev node.index.js
 
+In addition run
+
+    $ gulp dev
+
+to watch and compile `less` stylesheet files.
+
 ## With Docker
 
 If you don't want to install Node / Bower / Gulp on your local machine, you can
