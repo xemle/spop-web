@@ -44,6 +44,16 @@ angular
         clear: function() {
           return $http.get('/spop/qclear');
         },
+        toggleRepeat: function() {
+          return $http.get('/spop/repeat').then(function(response) {
+            return new StatusModel(response.data);
+          });
+        },
+        toggleShuffle: function() {
+          return $http.get('/spop/shuffle').then(function(response) {
+            return new StatusModel(response.data);
+          });
+        },
         addTrack: function(track) {
           return $http.get('/spop/uadd ' + track.uri).then(function(response) {
             $rootScope.$emit('queue:change');

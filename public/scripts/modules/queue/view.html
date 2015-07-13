@@ -9,12 +9,18 @@
     <div track-timer="status" ng-show="!status.isStopped()" on-seek="onSeek(position)"></div>
   </div>
   <div class="col-xs-12 col-sm-8 col-md-3">
-    <p>
-      <button class="btn btn-default" ng-click="prev()"><i class="fa fa-step-backward"></i></button>
-      <button class="btn btn-default" ng-click="toggle()"><i class="fa" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying()}"></i></button>
-      <button class="btn btn-default" ng-click="next()"><i class="fa fa-step-forward"></i></button>
-      <button class="btn btn-default" ng-click="clear()"><i class="fa fa-trash"></i></button>
-    </p>
+    <div class="row">
+      <div class="col-xs-6 col-md-12">
+        <button class="btn btn-default" ng-click="prev()"><i class="fa fa-fw fa-step-backward"></i></button>
+        <button class="btn btn-default" ng-click="toggle()"><i class="fa fa-fw" ng-class="{'fa-play': !status.isPlaying(), 'fa-pause': status.isPlaying()}"></i></button>
+        <button class="btn btn-default" ng-click="next()"><i class="fa fa-fw fa-step-forward"></i></button>
+      </div>
+      <div class="col-xs-6 col-md-12">
+        <button class="btn btn-default" ng-click="toggleRepeat()" ng-class="{'btn-primary': status.isRepeat()}"><i class="fa fa-fw fa-repeat"></i></button>
+        <button class="btn btn-default" ng-click="toggleShuffle()" ng-class="{'btn-primary': status.isShuffle()}"><i class="fa fa-fw fa-random"></i></button>
+        <button class="btn btn-default" ng-click="clear()"><i class="fa fa-fw fa-trash"></i></button>
+      </div>
+    </div>
   </div>
 </div>
 

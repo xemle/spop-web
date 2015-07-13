@@ -14,6 +14,8 @@ angular
       $scope.prev = QueueService.prev;
       $scope.toggle = QueueService.toggle;
       $scope.next = QueueService.next;
+      $scope.toggleShuffle = QueueService.toggleShuffle;
+      $scope.toggleRepeat = QueueService.toggleRepeat;
 
       function reloadQueue() {
         return QueueService.get().then(function(queue) {
@@ -31,6 +33,7 @@ angular
       $scope.onSeek = function(position) {
         return QueueService.seek(position * 1000);
       };
+
       function setStatus(status) {
         $scope.status = status;
         $scope.currentTrack = status.current_track;

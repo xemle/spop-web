@@ -35,6 +35,14 @@ angular
         return this.duration - this.getTime();
       };
 
+      StatusModel.prototype.isShuffle = function() {
+        return this.shuffle;
+      };
+
+      StatusModel.prototype.isRepeat = function() {
+        return this.repeat;
+      };
+
       return StatusModel;
     }
   ]);
