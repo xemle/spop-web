@@ -22,7 +22,8 @@
     "angular-strap": "~2.2.4",
     "bootstrap-additions": "git://github.com/mgcrea/bootstrap-additions#~0.3.1",
     "angular-animate": "~1.4.0",
-    "angular-touch": "~1.4.1"
+    "angular-touch": "~1.4.1",
+    "favico.js": "~0.3.7"
   },
   "resolutions": {
     "angular": "1.4.1"

@@ -10,7 +10,7 @@ angular
           function updateImage(url) {
             var $img = angular.element('<img>');
             $img.attr('src', url);
-            $img.bind('load', function() {
+            $img.on('load', function() {
               element.attr('src', url);
             });
           }
