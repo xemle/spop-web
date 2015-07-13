@@ -6,9 +6,10 @@ angular
     '$rootScope',
     '$scope',
     'QueueService',
+    'StatusService',
     'queue',
     'status',
-    function($rootScope, $scope, QueueService, queue, status) {
+    function($rootScope, $scope, QueueService, StatusService, queue, status) {
       $scope.queue = queue;
 
       $scope.prev = QueueService.prev;
@@ -46,8 +47,11 @@ angular
       $scope.$on('$destroy', $rootScope.$on('queue:change', function() {
         reloadQueue();
       }));
-      $scope.$on('$destroy', $rootScope.$on('visibility:change', function() {
-        reloadQueue();
+      $scope.$on('$destroy', $rootScope.$on('visibility:change', function(event, isHidden) {
+        if (!isHidden) {
+          reloadQueue();
+          StatusService.status().then(setStatus);
+        }
       }));
 
     }

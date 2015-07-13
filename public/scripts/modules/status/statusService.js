@@ -18,7 +18,7 @@ angular
         });
       }
 
-      $rootScope.$on('visibility:change', function($ev, isHidden) {
+      $rootScope.$on('visibility:change', function(event, isHidden) {
         if (isHidden) {
           service.stop();
         } else {
