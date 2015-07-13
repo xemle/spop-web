@@ -21,14 +21,14 @@ angular
 
           if (timer) {
             return;
-          } else if (immediate && elapsed > interval) {
+          } else if (immediate || elapsed > interval) {
             last = now;
-            callback.call(context, args);
+            callback.apply(context, args);
           } else {
             timer = $timeout(function() {
               timer = null;
               last = +new Date();
-              callback.call(context, args);
+              callback.apply(context, args);
             }, interval - elapsed);
           }
         };
