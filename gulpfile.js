@@ -23,20 +23,19 @@ gulp.task('copyFontsFromBower', function() {
   var bowerBase = 'public/bower_components/';
 
   return gulp.src([
-    bowerBase + 'fontawesome/fonts/*',
-    bowerBase + 'bootstrap/fonts/*'
-  ])
+      bowerBase + 'fontawesome/fonts/*',
+      bowerBase + 'bootstrap/fonts/*'
+    ])
     .pipe(gulp.dest('public/fonts'));
 });
 
-gulp.task('copyFontsToDist', ['copyFontsFromBower'], function() {
-  return gulp.src('public/fonts/*')
-    .pipe(gulp.dest('dist/fonts'));
-});
-
-gulp.task('copyImages', function() {
-  return gulp.src('public/images/*')
-    .pipe(gulp.dest('dist/images'));
+gulp.task('copyDist', ['copyFontsFromBower'], function() {
+  return gulp.src([
+      'public/favicon.png',
+      'public/images/*',
+      'public/fonts/*'
+    ], {base: 'public'})
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('less', function() {
@@ -69,6 +68,6 @@ gulp.task('watch', ['less'], function() {
 
 gulp.task('dev', ['copyFontsFromBower', 'watch']);
 
-gulp.task('dist', ['html', 'copyFontsToDist', 'copyImages']);
+gulp.task('dist', ['html', 'copyDist']);
 
 gulp.task('default', ['dist']);
