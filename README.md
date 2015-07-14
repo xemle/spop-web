@@ -6,6 +6,8 @@ daemon) as **Advance Spotify Player for [Raspberry
 Pi](https://www.raspberrypi.org)** (alternative to
 [Volumio](https://volumio.org) or [Rune Audio](http://www.runeaudio.com) UI).
 
+![Screenshot](/images/screenshot.png?raw=true "spop-web Queue")
+
 ## Features
 
 * Play queue with play, pause, next, and previous
