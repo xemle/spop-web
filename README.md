@@ -58,13 +58,11 @@ Open your browser at [localhost:3000](http://localhost:3000)
 By default spop-web uses minified versions of css and javascript files. If you
 are coding some new feature you can serve un-minified files via:
 
-    $ NODE_ENV=dev node.index.js
-
-In addition run
-
     $ gulp dev
 
-to watch and compile `less` stylesheet files.
+This will start the spop-web server at [localhost:3000](http://localhost:3000)
+with live reloading. Now you can modify server or client files and the server
+restarts or browser reloads automatically on file changes.
 
 ## With Docker
 

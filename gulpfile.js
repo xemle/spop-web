@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     debug = require('gulp-debug'),
     less = require('gulp-less'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    liveServer = require('gulp-live-server');
 
 
 gulp.task('ng-templates', function() {
@@ -62,11 +63,19 @@ gulp.task('html', ['less', 'ng-templates'], function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', ['less'], function() {
+gulp.task('serve', function() {
+  var server = liveServer('index.js', {env: {NODE_ENV: 'development'}});
+  server.start();
+  gulp.watch(['public/scripts/**', 'public/styles/*.css'], function() {
+    server.notify.apply(server, arguments);
+  });
+  gulp.watch(['index.js', 'lib/**'], function() {
+    server.start.apply(server);
+  });
   gulp.watch('public/styles/*.less', ['less']);
 });
 
-gulp.task('dev', ['copyFontsFromBower', 'watch']);
+gulp.task('dev', ['copyFontsFromBower', 'less', 'serve']);
 
 gulp.task('dist', ['html', 'copyDist']);
 
