@@ -53,6 +53,21 @@ spop web uses:
 
 Open your browser at [localhost:3000](http://localhost:3000)
 
+For further options see `-h`:
+
+    $ node index.js -h
+    Usage: node index.js
+
+      -d, --debug          Turn debug mode on
+      -p, --port=ARG       Port of spop-web server. Default is 3000
+          --spop-host=ARG  Host of spop server. Default is localhost
+          --spop-port=ARG  port of spop server. Default is 6602
+      -h, --help           Display this help
+
+E.g. if spop daemon runs on host `192.168.1.65` start `spop-web` with
+
+    $ node index --spop-host 192.168.1.65
+
 ### Run Development Mode
 
 By default spop-web uses minified versions of css and javascript files. If you

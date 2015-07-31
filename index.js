@@ -3,12 +3,28 @@ var compression = require('compression');
 var spopMiddleware = require('./lib/spop/middleware');
 var app = express();
 
-var isDevelopment = process.env.NODE_ENV && process.env.NODE_ENV.match(/^dev/i);
+// Defaults
+var PORT = 3000;
+var SPOP_HOST = 'localhost';
+var SPOP_PORT = 6602;
+
+var opt = require('node-getopt').create([
+  ['d', 'debug',         'Turn debug mode on'],
+  ['p', 'port=ARG',      'Port of spop-web server. Default is ' + PORT],
+  ['',  'spop-host=ARG', 'Host of spop server. Default is ' + SPOP_HOST],
+  ['',  'spop-port=ARG', 'port of spop server. Default is ' + SPOP_PORT],
+  ['h', 'help',          'Display this help']
+])
+.bindHelp()
+.parseSystem();
+
+var devMode = opt.options.debug || process.env.NODE_ENV && process.env.NODE_ENV.match(/^dev/i);
 var spopOptions = {
-  port: 6602
+  host: opt.options['spop-host'] || SPOP_HOST,
+  port: +opt.options['spop-port'] || SPOP_PORT
 };
 
-if (!isDevelopment) {
+if (!devMode) {
   app.use(express.static('dist', {maxAge: '1d'}));
 } else {
   // Disable caching
@@ -32,9 +48,9 @@ if (!isDevelopment) {
 app.use(compression());
 app.use('/spop', spopMiddleware(spopOptions));
 
-var server = app.listen(3000, function () {
+var server = app.listen(+opt.options['port'] || PORT, function () {
   var host = server.address().address;
   var port = server.address().port;
-  var mode = isDevelopment ? ' (dev mode)' : '';
+  var mode = devMode ? ' (dev mode)' : '';
   console.log('App listening at http://%s:%s%s', host, port, mode);
 });
