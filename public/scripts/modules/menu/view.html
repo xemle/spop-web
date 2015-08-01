@@ -11,6 +11,12 @@
           <li><a ng-click="open('/queue')"><i class="fa fa-fw fa-list"></i> Queue</a></li>
           <li><a ng-click="open('/search')"><i class="fa fa-fw fa-search"></i> Search</a></li>
         </ul>
+
+        <div ng-show="volume !== undefined" class="volume">
+          <div class="icon"><i class="fa fa-fw fa-volume-up"></i></div>
+          <div class="volume-slider" slider slider-max="100" slider-position="volume" on-slide="onSlide(percent)" on-slide-end="onSlideEnd(percent)"></div>
+        </div>
+
       </div>
 <!--      <div class="aside-footer">
         <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>

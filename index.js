@@ -13,6 +13,7 @@ var opt = require('node-getopt').create([
   ['p', 'port=ARG',      'Port of spop-web server. Default is ' + PORT],
   ['',  'spop-host=ARG', 'Host of spop server. Default is ' + SPOP_HOST],
   ['',  'spop-port=ARG', 'port of spop server. Default is ' + SPOP_PORT],
+  ['',  'mixer=ARG',     'Name of volume mixer (alsa only)'],
   ['h', 'help',          'Display this help']
 ])
 .bindHelp()
@@ -47,6 +48,13 @@ if (!devMode) {
 
 app.use(compression());
 app.use('/spop', spopMiddleware(spopOptions));
+
+if (opt.options.mixer) {
+  var volumeOptions = {
+    mixer: opt.options.mixer
+  };
+  app.use('/volume', require('./lib/alsa/volume')(volumeOptions));
+}
 
 var server = app.listen(+opt.options['port'] || PORT, function () {
   var host = server.address().address;

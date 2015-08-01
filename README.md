@@ -18,6 +18,7 @@ Pi](https://www.raspberrypi.org)** (alternative to
 * Cover art on tracks and albums
 * Mobile friendly e.g. long press on the cover starts playback of track or album
 * Multipe device support: updates are shown on all connected devices
+* Volume control ([alsa](http://www.alsa-project.org) only)
 
 ## Requirements
 
@@ -62,11 +63,17 @@ For further options see `-h`:
       -p, --port=ARG       Port of spop-web server. Default is 3000
           --spop-host=ARG  Host of spop server. Default is localhost
           --spop-port=ARG  port of spop server. Default is 6602
+          --mixer=ARG      Name of volume mixer (alsa only)
       -h, --help           Display this help
 
 E.g. if spop daemon runs on host `192.168.1.65` start `spop-web` with
 
-    $ node index --spop-host 192.168.1.65
+    $ node index.js --spop-host 192.168.1.65
+
+`spop-web` supports also volume control via [alsa](http://www.alsa-project.org).
+Enable volume control via `mixer` option and your preferred mixer
+
+    $ node index.js --mixer Master
 
 ### Run Development Mode
 
